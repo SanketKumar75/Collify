@@ -1,2 +1,2 @@
 # Collify
-A online teaching-learning tool for teacher to make online studying smooth
+A online teaching-learning tool for teacher and student to make online studying smooth
