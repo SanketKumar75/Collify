@@ -1,12 +1,28 @@
 import './App.css';
+import React from 'react';
+import {Route} from 'react-router-dom';
+import StudentHome from'./student-comp/S-main.js';
+import FacultyHome from './faculty-comp/F-main';
+import Home from './Home';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <>
+      <header className = "App-header ">
+        <Route exact path = "/">
+          <Home />
+        </Route>
 
-      </header>
-    </div>
+        <Route path = "/student">
+        <StudentHome />
+        </Route>
+
+        <Route path = "/faculty">
+        <FacultyHome />
+        </Route>
+        </header>
+    </>
   );
 }
 
