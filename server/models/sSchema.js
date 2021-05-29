@@ -13,9 +13,9 @@ const sSchema  = new mongoose.Schema({
         type: String,
         required: true
     },
-    Phone: {
+    phone: {
         type: Number,
-        
+        required: true
     },
     password: {
         type: String,

@@ -7,10 +7,12 @@ import FacultyHome from './faculty-comp/F-main';
 import Home from './Home';
 
 
+
 function App() {
   return (
     <>
-      <header className = "App-header ">
+
+    
         <Route exact path = "/">
           <Home />
         </Route>
@@ -22,7 +24,6 @@ function App() {
         <Route path = "/faculty">
         <FacultyHome />
         </Route>
-        </header>
     </>
 =======
 import logo from './logo.svg';

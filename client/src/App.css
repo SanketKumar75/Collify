@@ -28,6 +28,7 @@
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 .App-link {
@@ -43,3 +44,25 @@
   }
 }
 >>>>>>> front
+=======
+.form{
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+
+.Subjects{
+  margin-left: 10%;
+  align-self: center;
+  text-align: center;
+  background: red;
+  border-radius: 10px;
+  justify-content: center;
+  height: 500px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 80%;
+}
+>>>>>>> Proper

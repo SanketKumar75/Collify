@@ -45,13 +45,13 @@ router.post('/student-sign', async(req, res)=>{
         const userExist = await Student.findOne({email: email});
 
         if(userExist){
-        return res.status(201).json({error: "email already exists"});
+        return res.status(422).json({error: "email already exists"});
         console.log("1");
         }
             const student = new Student({name, email, phone, password});
 
             await student.save();
-            res.status(201).json({message: " Yesss registered successfully at student"});
+            res.status(201).json({message: "Yesss registered successfully at student"});
             console.log("2");
     } catch(err){
         console.log(err);

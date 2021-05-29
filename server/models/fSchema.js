@@ -12,8 +12,9 @@ const fSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    Phone: {
+    phone: {
         type: Number,
+        required: true
         
     },
     password: {
