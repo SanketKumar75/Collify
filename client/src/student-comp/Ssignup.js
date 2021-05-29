@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import {Navlink, useHistory} from 'react-router-dom';
 
-
-const StLogin = () => {
+const Signup = () =>{
 
     const history = useHistory();
     const [user, setUser] = useState({
-        name:"", password:""
+        name:"", email:"", phone:"", password:"", cpassword:""
     });
 
     let name, value;
@@ -21,45 +20,54 @@ const StLogin = () => {
         const postData = async (e) =>{
             e.preventDefault();
 
-            const {email,  password} = user;
-            const res = await fetch('/student-login', {
+            const {name , email , phone , password } = user;
+            const res = await fetch('/student-sign', {
                 method: "POST",
-                headers: {
+                header: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    email, password
+                    name, email, phone, password
                 })
             });
             const data = await res.json();
 
-            if(data.status === 422 || !data){
+                if(data.status == 422 || !data){
                 window.alert("Invalid Registeration");
                 console.log("Invalid reghisteration");
-            }
+                }
             else{
                 //window.alert("Yup SignedUP");
             console.log("Yup SignedUP");
-            history.push("/student")
+            history.push("./login")
             }
         }
 
     return (
         <>
-        <div className= "form">
+        ]<h3>Sign up</h3>
+            <div className= "form">
                 <form method="POST">
+                <input type="name" name="name"
+                value={user.name}
+                onChange={handleInput}
+                    placeholder="Userame" required />
                     <input type="email" name="email"
                     value={user.email}
                     onChange={handleInput}
                         placeholder="Email Id" required />
+                    <input type="text" name="phone"
+                    value={user.phone}
+                    onChange={handleInput}
+                        placeholder="Phone No" required />
                     <input type="Password" name="password"
                     value={user.password}
                     onChange={handleInput}
-                        placeholder="Password" required />
-                    <button  onClick={postData}>Login</button>
+                        placeholder="Confirm Password" required />
+                    <button  onClick={postData}>Sign up</button>
                 </form>
             </div>
         </>
     )
 }
-export default StLogin
+export default Signup
