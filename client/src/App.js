@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of b1bfecc (crying)
 import './App.css';
 import React from 'react';
 import {Route} from 'react-router-dom';
@@ -25,5 +28,11 @@ function App() {
         <FacultyHome />
         </Route>
     </>
+<<<<<<< HEAD
   )}
+=======
+  );
+}
+
+>>>>>>> parent of b1bfecc (crying)
 export default App;

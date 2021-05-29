@@ -2,20 +2,6 @@
   text-align: center;
 }
 
-<<<<<<< HEAD
-=======
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
->>>>>>> front
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -27,6 +13,7 @@
   color: white;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -66,3 +53,6 @@
   width: 80%;
 }
 >>>>>>> Proper
+=======
+
+>>>>>>> parent of b1bfecc (crying)

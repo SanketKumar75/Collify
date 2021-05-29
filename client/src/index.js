@@ -1,22 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-<<<<<<< HEAD
 import {BrowserRouter} from 'react-router-dom';
-=======
->>>>>>> front
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-<<<<<<< HEAD
     <BrowserRouter>
     <App />
     </BrowserRouter>
-=======
-    <App />
->>>>>>> front
   </React.StrictMode>,
   document.getElementById('root')
 );
