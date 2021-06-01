@@ -34,12 +34,7 @@ fSchema.pre('save', async function(next){
     next();
 })
 
-
 //include JWT for token generation
 
-
-
-
 const Faculty = mongoose.model("FACULTY", fSchema);
-
 module.exports = Faculty;
