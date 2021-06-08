@@ -13,11 +13,6 @@
   color: white;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
 .App-link {
   color: #61dafb;
 }
@@ -30,8 +25,7 @@
     transform: rotate(360deg);
   }
 }
->>>>>>> front
-=======
+
 .form{
   display: flex;
   flex-direction: row;
@@ -52,7 +46,3 @@
   margin-bottom: 5%;
   width: 80%;
 }
->>>>>>> Proper
-=======
-
->>>>>>> parent of b1bfecc (crying)
