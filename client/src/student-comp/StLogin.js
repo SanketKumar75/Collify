@@ -33,13 +33,16 @@ const StLogin = () => {
             });
             const data = await res.json();
 
-            if(data.status === 422 || !data){
-                window.alert("Invalid Registeration");
+            if(res.status === 402 || !data){
+                window.alert(`Invalid Registeration ${res.status}`);
                 console.log("Invalid reghisteration");
             }
-            else{
-                //window.alert("Yup SignedUP");
-            console.log("Yup SignedUP");
+            else if(res.status === 422 )
+            window.alert(`Invalid Registeration ${res.status}`);
+            else if(res.status === 200){
+
+            window.alert(`Yup Login succe3ssfull  ${res.status}`);
+            console.log("Yup Login succe3ssfull ");
             history.push("/student")
             }
         }
@@ -61,5 +64,6 @@ const StLogin = () => {
             </div>
         </>
     )
+
 }
 export default StLogin

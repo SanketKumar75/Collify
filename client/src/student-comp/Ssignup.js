@@ -23,7 +23,7 @@ const Signup = () =>{
             const {name , email , phone , password } = user;
             const res = await fetch('/student-sign', {
                 method: "POST",
-                header: {
+                headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
@@ -32,12 +32,12 @@ const Signup = () =>{
             });
             const data = await res.json();
 
-                if(data.status == 422 || !data){
-                window.alert("Invalid Registeration");
+                if(res.status == 402 || res.status == 422 || !data){
+                window.alert(`Invalid Registeration ${res.status}`);
                 console.log("Invalid reghisteration");
                 }
             else{
-                //window.alert("Yup SignedUP");
+            window.alert("Yup SignedUP");
             console.log("Yup SignedUP");
             history.push("./login")
             }
