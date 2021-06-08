@@ -36,7 +36,7 @@ router.get('/faculty-sign', (req, res)=>{
 router.post('/student-sign', async(req, res)=>{
     const { name, email,  phone, password} = req.body;
 
-    if( !name || !email || !phone || !password || password.length<8 ){
+    if( !name ||! email ||!phone || !password || password.length<8 ){
         return res.status(402).json({error:"You missed someThing"});
         console.log("0");
     }
@@ -72,7 +72,7 @@ router.post('/faculty-sign', async(req, res)=>{
         const userExist = await Faculty.findOne({email: email});
 
         if(userExist){
-        return res.status(422).json({error: "email already exists"});
+        return res.status(201).json({error: "email already exists"});
         console.log("5");
         }
             const faculty = new Faculty({name, email, phone, password});
