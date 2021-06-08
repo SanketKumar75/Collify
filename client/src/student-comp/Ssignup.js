@@ -32,8 +32,8 @@ const Signup = () =>{
             });
             const data = await res.json();
 
-                if(res.status == 402 || !data){
-                window.alert("Invalid Registeration");
+                if(res.status == 402 || res.status == 422 || !data){
+                window.alert(`Invalid Registeration ${res.status}`);
                 console.log("Invalid reghisteration");
                 }
             else{
