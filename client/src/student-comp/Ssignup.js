@@ -5,7 +5,7 @@ const Signup = () =>{
 
     const history = useHistory();
     const [user, setUser] = useState({
-        name:"", email:"", phone:"", password:"", cpassword:""
+        name:"", email:"", phone:"", password:""
     });
 
     let name, value;
