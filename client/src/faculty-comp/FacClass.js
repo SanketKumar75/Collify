@@ -4,7 +4,6 @@ const FacClass = () => {
     return (
         <div>
             <h2>InClass</h2>
-
         </div>
     )
 }

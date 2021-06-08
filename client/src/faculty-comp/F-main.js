@@ -3,7 +3,7 @@ import FacClass from './FacClass';
 import {Route} from 'react-router-dom';
 import FacLogin from './FacLogin';
 import Navbar from './FacultyHomePage';
-import FacNotes from './notes';
+
 
 
 
@@ -16,9 +16,6 @@ const FacultyHome = () => {
         </div>
         <Route  exact path="/faculty/class">
         <FacClass />
-        </Route>
-        <Route  exact path="/faculty/notes">
-        <FacNotes/>
         </Route>
         <Route  exact path="/faculty/login">
         <FacLogin />

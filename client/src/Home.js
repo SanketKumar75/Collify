@@ -9,7 +9,7 @@ const Home = () => {
         <NavLink to ="/student">Student</NavLink>
         <br />
         <br />
-        <NavLink to ="/faculty">Faculty</NavLink>
+        <NavLink to ="/student">Faculty</NavLink>
         </>
 
 
