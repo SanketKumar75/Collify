@@ -23,7 +23,7 @@ const Signup = () =>{
             const {name , email , phone , password } = user;
             const res = await fetch('/faculty-sign', {
                 method: "POST",
-                header: {
+                headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
