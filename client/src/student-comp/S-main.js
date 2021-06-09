@@ -4,7 +4,7 @@ import {Route} from 'react-router-dom';
 import StLogin from './StLogin';
 import Navbar from './StudentHomePage'
 import Signup from './Ssignup';
-import Subject from '../Comp/SubjectComp';
+import Subject from './SubjectComp';
 
 
 const StudentHome = () => {

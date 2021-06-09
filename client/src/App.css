@@ -1,10 +1,7 @@
 
-
 .App {
   text-align: center;
 }
-
-
 /*waste*/
 .App-header {
   background-color: #282c34;
@@ -16,10 +13,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
 .App-link {
   color: #61dafb;
 }
+
 
 @keyframes App-logo-spin {
   from {
@@ -50,14 +47,15 @@
   margin-top: 5%;
   margin-bottom: 5%;
   width: 80%;
+  overflow: scroll;
 }
 
 
 /* Subject box insider starts*/
 .SubId{
-  margin: 5% 5% 5% 5% ;
+  margin: 0% 0% 0% 0% ;
   border-radius: 5px;
-  border: 2px;
+  border: 10px;
   background: orange;
   min-height: 20%;
   display: flex;
@@ -80,6 +78,47 @@
   align-self: center;
   text-align: center;
   flex: 1;
+  z-index: 5;
 }
 /* Subject box insider Ends*/
 
+.nav-link{
+  overflow: hidden;
+}
+/* Sujects viewing ends*/
+
+
+/* Class section STARTS HERE */
+
+.Content{
+  background: whitesmoke;
+  border-radius: 10px;
+  
+  margin-left: 2%;
+  margin-top: 3%;
+  height: 500px;/*maybe you are looking for this  %*/
+  margin-bottom: 5%;
+  width: 95%;
+  display: flex;
+}
+.Options{
+  border-radius:  10px 10px 0px 0px;
+  
+  background: grey;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  height: 100px
+}
+.Option{
+  align-items: center;
+  align-content: inherit;
+  flex: 1;
+  border-radius: 10px;
+  background: none;
+  height: 100px;
+}
+.Option h4{
+  margin-top: 20%;
+  margin-left: 20%;
+}

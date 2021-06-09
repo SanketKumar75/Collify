@@ -32,12 +32,13 @@ const Signup = () =>{
             });
             const data = await res.json();
 
-                if(data.status == 422 || !data){
-                window.alert("Invalid Registeration");
+                if(res.status == 422 || res.status == 402 || !data){
+                    window.alert(`Invalid Registeration ${res.status}`);
                 console.log("Invalid reghisteration");
                 }
             else{
-                //window.alert("Yup SignedUP");
+            
+                window.alert(`Yup SignedUP  ${res.status}`);
             console.log("Yup SignedUP");
             history.push("./login")
             }

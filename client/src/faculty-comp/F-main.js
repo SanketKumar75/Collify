@@ -4,7 +4,10 @@ import {Route} from 'react-router-dom';
 import FacLogin from './FacLogin';
 import Navbar from './FacultyHomePage';
 import Signup from './Fsignup'
-import Subject from '../Comp/SubjectComp';
+import Subject from './SubjectComp';
+import Notes from './Notes';
+import Assignment from './Assignment';
+import Discussion from './Disscussion';
 
 
 const FacultyHome = () => {
@@ -27,6 +30,15 @@ const FacultyHome = () => {
             <Signup />
         </Route>
 
+        <Route  exact path="/faculty/notes">
+        <Notes />
+        </Route>
+        <Route  exact path="/faculty/assignment">
+        <Assignment />
+        </Route>
+        <Route path="/faculty/disscussion">
+            <Discussion />
+        </Route>
         </>
     )
 }

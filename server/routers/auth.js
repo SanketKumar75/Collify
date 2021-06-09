@@ -68,11 +68,12 @@ router.post('/faculty-sign', async(req, res)=>{
         console.log("4");
     }
 
+
     try{
         const userExist = await Faculty.findOne({email: email});
 
         if(userExist){
-        return res.status(201).json({error: "email already exists"});
+        return res.status(422).json({error: "email already exists"});
         console.log("5");
         }
             const faculty = new Faculty({name, email, phone, password});
