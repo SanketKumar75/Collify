@@ -95,20 +95,22 @@
   border-radius: 10px;
   
   margin-left: 2%;
-  margin-top: 3%;
+  margin-top: 0%;
   height: 500px;/*maybe you are looking for this  %*/
-  margin-bottom: 5%;
+  margin-bottom: 2%;
   width: 95%;
   display: flex;
+  flex-direction: row;
 }
 .Options{
-  border-radius:  10px 10px 0px 0px;
+  border-radius:  10px 10px 10px 10px;
   
   background: grey;
   display: flex;
   flex-direction: row;
   flex: 1;
-  height: 100px
+  height: 100px;
+  margin-top: 5%;
 }
 .Option{
   align-items: center;
@@ -119,6 +121,7 @@
   height: 100px;
 }
 .Option h4{
-  margin-top: 20%;
+  margin-top: 10%;
   margin-left: 20%;
 }
+
