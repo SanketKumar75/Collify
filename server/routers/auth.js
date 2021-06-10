@@ -139,7 +139,7 @@ router.post('/faculty-login', async (req, res) =>{
         let token;
         const {email, password} = req.body;
         if(!email || !password){
-            return res.status(400).json({error: "enter details properly"});
+            return res.status(402).json({error: "enter details properly"});
         }
         const facultyLogin = await Faculty.findOne({email: email});
         console.log(facultyLogin);
@@ -152,14 +152,14 @@ router.post('/faculty-login', async (req, res) =>{
 
 
                                 if(!isMatch){
-                                    res.status(400).json({ error: "Details dont match"});
+                                    res.status(422).json({ error: "Details dont match"});
                                 }
                                 else{
                                     res.status(200).json({ message: "Login Successfull"});
                                 }
                     }
             else{
-                res.status(400).json({error: "Details dosnt match"});
+                res.status(422).json({error: "Details dosnt match"});
             }
             
 

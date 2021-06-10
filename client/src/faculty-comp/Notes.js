@@ -5,25 +5,30 @@ import {NavLink} from 'react-router-dom';
 
 const Notes = () => {
     return (
+        
         <>
         <div>
             <h2>InClass</h2>
             <div className="Options Content">
                         
-                        <NavLink className=" nav-link col text-secondry " to="/faculty/class"><div className="Option text-light"><h4>Class</h4></div></NavLink>
-                        <NavLink className=" nav-link col text-secondry bg-light  border rounded" to="/faculty/notes"><div className="Option text-dark"><h4>Notes</h4></div></NavLink>
-                        <NavLink className=" nav-link col text-secondry " to="/faculty/assignment"><div className="Option text-light"><h4>Assignment</h4></div></NavLink>
-                        <NavLink className=" nav-link col text-secondry " to="/faculty/disscussion"><div className="Option text-light"><h4>Discussion</h4></div></NavLink>
-                       
+                <NavLink className=" nav-link col text-secondry " to="/student/class"><div className="Option text-light"><h4>Class</h4></div></NavLink>
+                <NavLink className=" nav-link col text-secondry bg-light  border rounded" to="/student/notes"><div className="Option text-dark"><h4>Notes</h4></div></NavLink>
+                <NavLink className=" nav-link col text-secondry " to="/student/assignment"><div className="Option text-light"><h4>Assignment</h4></div></NavLink>
+                <NavLink className=" nav-link col text-secondry " to="/student/disscussion"><div className="Option text-light"><h4>Discussion</h4></div></NavLink>
+                
      
                      </div>
         </div>
             <div className="Content">
                 <div className="w-50 h-100 bg-light ">
 
-                    <h3 className="w-75 h-50">Your Notes are here!!..</h3>
+                    <h3 className="w-75 h-25">Your Notes are here!!..</h3>
+                    <div className="mb-3">
+                  
+                    <input className="form-control w-75 mr-auto ml-auto" type="file" id="formFile" />
+                    </div>
 
-                    <div className=" mr-auto ml-auto mt-0 h-25 w-50 bg-light">
+                    <div className=" mr-auto ml-auto mt-5 h-25 w-50 bg-light">
                     <button type="button" className="btn btn-primary mr-auto ml-auto h-50">Upload New Notes</button>
                     </div>
                  

@@ -33,7 +33,7 @@ const StLogin = () => {
             });
             const data = await res.json();
 
-            if(res.status === 402 || !data){
+            if(res.status === 402 || !res){
                 window.alert(`Invalid Registeration ${res.status}`);
                 console.log("Invalid reghisteration");
             }

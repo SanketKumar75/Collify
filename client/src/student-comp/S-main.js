@@ -1,10 +1,15 @@
 import React from 'react';
+
 import StClass from './StClass';
 import {Route} from 'react-router-dom';
 import StLogin from './StLogin';
 import Navbar from './StudentHomePage'
 import Signup from './Ssignup';
 import Subject from './SubjectComp';
+import Notes from './Notes';
+import Assignment from './Assignment';
+import Discussion from './Discussion';
+
 
 
 const StudentHome = () => {
@@ -25,6 +30,16 @@ const StudentHome = () => {
         </Route>
         <Route path="/student/signup">
             <Signup />
+        </Route>
+
+        <Route  exact path="/student/notes">
+        <Notes />
+        </Route>
+        <Route  exact path="/student/assignment">
+        <Assignment />
+        </Route>
+        <Route path="/student/disscussion">
+            <Discussion />
         </Route>
 
        </>
