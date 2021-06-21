@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 
 //include database and class schema
 require('../db/database');
+
 const Clas = require("../models/classSchema");
 
 
@@ -14,6 +15,7 @@ const middleware = (req, res, next)=>{
     console.log("This is middleware");
     next();
 }
+
 
 
 //get request for test
@@ -52,10 +54,26 @@ router.post('/faculty/create-class', async (req, res) =>{
 
 });
 
+
+//ForEach Subject create a div box
+router.post('/faculty/get-class',  (req, res) =>{
+    
+        try{
+            db.Clas.find().forEach( res.body("HEllo") );
+
+            
+        }
+        catch(err){
+            console.log(err);
+        }
+}) 
+
+
 //Notes
 
 
 //for uploading Notes
+// for videos or other stuff
 
 
 module.exports = router

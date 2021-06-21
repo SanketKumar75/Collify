@@ -8,9 +8,15 @@ const jwt = require('jsonwebtoken');
 //conecting database and schemas
 require('../db/database');
 
+
+
 //schema-s here
 const Student = require("../models/sSchema");
 const Faculty = require("../models/fSchema");
+
+
+
+
 
 const middleware = (req, res, next)=>{
     console.log("This is middleware");

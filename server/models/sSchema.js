@@ -13,8 +13,12 @@ const sSchema  = new mongoose.Schema({
         type: String,
         required: true
     },
+    batch: {
+        type: String,
+        required: true
+    },
     phone: {
-        type: Number,
+    type: Number,
         required: true
     },
     password: {
