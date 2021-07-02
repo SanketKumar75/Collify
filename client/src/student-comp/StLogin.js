@@ -5,23 +5,16 @@ import {Navlink, useHistory} from 'react-router-dom';
 const StLogin = () => {
 
     const history = useHistory();
-    const [user, setUser] = useState({
-        name:"", password:""
-    });
 
-    let name, value;
-        const handleInput = (e) =>{
-            console.log(e);
-            name= e.target.name;
-            value= e.target.value;
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-            setUser({ ...user, [name]: value});
-        }
+
 
         const postData = async (e) =>{
             e.preventDefault();
 
-            const {email,  password} = user;
+            
             const res = await fetch('/student-login', {
                 method: "POST",
                 headers: {
@@ -47,17 +40,18 @@ const StLogin = () => {
             }
         }
 
+
     return (
         <>
         <div className= "form">
                 <form method="POST">
-                    <input type="email" name="email"
-                    value={user.email}
-                    onChange={handleInput}
+                    <input type="text" name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                         placeholder="Email Id" required />
                     <input type="Password" name="password"
-                    value={user.password}
-                    onChange={handleInput}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                         placeholder="Password" required />
                     <button  onClick={postData}>Login</button>
                 </form>

@@ -15,7 +15,7 @@ const FacultyHome = () => {
         <>
         <Navbar />
         <div>
-            <h2>Paculty'sPage</h2>
+            <h2>Faculty'sPage</h2>
         </div>
         <Route  exact path="/faculty">
         <Subject />

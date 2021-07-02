@@ -46,8 +46,8 @@ const Signup = () =>{
 
     return (
         <>
-        ]<h3>Sign up</h3>
-            <div className= "form">
+        <h3>Sign up</h3>
+            <div className= "form col d-flex justify-content-center h-50 w-25">
                 <form method="POST">
                 <input type="name" name="name"
                 value={user.name}
@@ -64,7 +64,7 @@ const Signup = () =>{
                     <input type="Password" name="password"
                     value={user.password}
                     onChange={handleInput}
-                        placeholder="Confirm Password" required />
+                        placeholder="Confirm Password" required /><br></br>
                     <button  onClick={postData}>Sign up</button>
                 </form>
             </div>

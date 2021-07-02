@@ -27,6 +27,14 @@ const sSchema  = new mongoose.Schema({
         //minlength: 8,
 
     },
+    tokens:[
+        {
+            token:{
+                type: String,
+                required: true
+            }
+        }
+    ]
 
 })
 
@@ -42,6 +50,19 @@ sSchema.pre('save', async function(next){
 });
 
 //include JWT here for token generation
+sSchema.methods.generateAuthToken = async function(){
+    try{
+        let token = jwt.sign({_id:this._id}, process.env.SECRET_KEY);
+        this.tokens = this.tokens.concat({token:token});
+        await this.save();
+            return token;
+
+    }catch(err){
+        console.log(err);
+    }
+}
+
+
 
 
 const Student = mongoose.model("STUDENT",sSchema);

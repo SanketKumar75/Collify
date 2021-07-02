@@ -5,7 +5,7 @@ const Signup = () =>{
 
     const history = useHistory();
     const [user, setUser] = useState({
-        name:"", email:"", phone:"", password:"", cpassword:""
+        name:"", email:"",batch:"", phone:"", password:"", cpassword:""
     });
 
     let name, value;
@@ -20,14 +20,14 @@ const Signup = () =>{
         const postData = async (e) =>{
             e.preventDefault();
 
-            const {name , email , phone , password } = user;
+            const {name , email ,batch, phone , password } = user;
             const res = await fetch('/student-sign', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    name, email, phone, password
+                    name, email,batch, phone, password
                 })
             });
             const data = await res.json();
@@ -45,8 +45,8 @@ const Signup = () =>{
 
     return (
         <>
-        ]<h3>Sign up</h3>
-            <div className= "form">
+     <h3>Sign up</h3>
+            <div className= "form col d-flex justify-content-center h-50 w-25">
                 <form method="POST">
                 <input type="name" name="name"
                 value={user.name}
@@ -56,6 +56,10 @@ const Signup = () =>{
                     value={user.email}
                     onChange={handleInput}
                         placeholder="Email Id" required />
+                    <input type="text" name="batch"
+                    value={user.batch}
+                    onChange={handleInput}
+                        placeholder="Batch" required />
                     <input type="text" name="phone"
                     value={user.phone}
                     onChange={handleInput}
@@ -63,7 +67,7 @@ const Signup = () =>{
                     <input type="Password" name="password"
                     value={user.password}
                     onChange={handleInput}
-                        placeholder="Confirm Password" required />
+                        placeholder="Confirm Password" required /><br />
                     <button  onClick={postData}>Sign up</button>
                 </form>
             </div>

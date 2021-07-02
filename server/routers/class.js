@@ -22,7 +22,17 @@ const middleware = (req, res, next)=>{
 router.get('/faculty/create-class', (req, res) =>{
     res.send("You are here bcoz you wanted to create class ..")
 })
-
+//All classes for showing  =>SubjectComp.js
+router.get('/allclass', (req, res) =>{
+    Clas.find()
+    .populate("name", "_id subject")
+    .then(classes=>{
+        res.json({classes})
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+})
 
 //properly working create request /faculty/create-class
 router.post('/faculty/create-class', async (req, res) =>{

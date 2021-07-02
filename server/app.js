@@ -18,10 +18,10 @@ app.use(require('./routers/auth'));
 
 app.use(require('./routers/class'));
 
-const middleware = (req, res, next)=>{
-    console.log("This is middleware");
-    next();
-}
+
+
+
+
 
 
 //for note upload

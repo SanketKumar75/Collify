@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const authenticate = require('../middleware/authenticate')
 //JWT nahi kai brooooo....
 
 
@@ -40,9 +41,9 @@ router.get('/faculty-sign', (req, res)=>{
 
 //SignUp student here
 router.post('/student-sign', async(req, res)=>{
-    const { name, email,  phone, password} = req.body;
+    const { name, email,batch,  phone, password} = req.body;
 
-    if( !name ||! email ||!phone || !password || password.length<8 ){
+    if( !name ||! email ||!batch ||!phone || !password || password.length<8 ){
         return res.status(402).json({error:"You missed someThing"});
         console.log("0");
     }
@@ -54,7 +55,7 @@ router.post('/student-sign', async(req, res)=>{
         return res.status(422).json({error: "email already exists"});
         console.log("1");
         }
-            const student = new Student({name, email, phone, password});
+            const student = new Student({name, email, batch, phone, password});
 
             await student.save();
             res.status(201).json({message: "Yesss registered successfully at student"});
@@ -115,7 +116,14 @@ router.post('/student-login', async (req, res) =>{
                 const isMatch = await bcrypt.compare(password, studentLogin.password);
 
                 //include JWtoken here
+                token = await studentLogin.generateAuthToken();
+                console.log(token);
 
+
+
+                res.cookie("jwtoken", token, {
+                    expires: new Date(Date.now + 2592000000)
+                });
 
                                 if(!isMatch){
                                     res.status(422).json({ error: "Details dont match"});
@@ -155,7 +163,13 @@ router.post('/faculty-login', async (req, res) =>{
                 const isMatch = await bcrypt.compare(password, facultyLogin.password);
 
                 //include JWtoken here
+                token = await facultyLogin.generateAuthToken();
+                console.log(token);
 
+
+                res.cookie("jwtoken", token, {
+                    expires: new Date(Date.now + 2592000000)
+                });
 
                                 if(!isMatch){
                                     res.status(422).json({ error: "Details dont match"});
@@ -186,10 +200,16 @@ router.get('/contact', middleware, (req, res)=>{
     console.log("contact");
 }
 );
-router.get('/about', (req, res)=>{
+router.get('/about', authenticate, (req, res)=>{
     res.send("Here you are ABOUT");
 }
 );
+
+router.get('/student', authenticate, (req, res)=>{
+    res.send("Here you are ABOUT");
+}
+);
+
 
 //homepage
 router.get('/', (req, res)=>{
