@@ -25,7 +25,7 @@ const StLogin = () => {
                 })
             });
             const data = await res.json();
-
+            
             if(res.status === 402 || !data){
                 window.alert(`Invalid Registeration ${res.status}`);
                 console.log("Invalid reghisteration");
@@ -34,6 +34,8 @@ const StLogin = () => {
             window.alert(`Invalid Registeration ${res.status}`);
             else if(res.status === 200){
 
+                localStorage.setItem("jwt", data.token)
+                localStorage.setItem("user", JSON.stringify(data))
             window.alert(`Yup Login succe3ssfull  ${res.status}`);
             console.log("Yup Login succe3ssfull ");
             history.push("/student")

@@ -67,6 +67,7 @@ router.post('/student-sign', async(req, res)=>{
 
 });
 
+
 //signUp faculty
 router.post('/faculty-sign', async(req, res)=>{
     const { name, email,  phone, password} = req.body;
@@ -97,13 +98,12 @@ router.post('/faculty-sign', async(req, res)=>{
 
 
 
-
 //Login student here JWT also here
 router.post('/student-login', async (req, res) =>{
     console.log(req.body);
     try{
         //shall be used while JWT
-        let token;
+        
         const {email, password} = req.body;
         if(!email || !password){
             return res.status(402).json({error: "enter details properly"});
@@ -116,20 +116,12 @@ router.post('/student-login', async (req, res) =>{
                 const isMatch = await bcrypt.compare(password, studentLogin.password);
 
                 //include JWtoken here
-                token = await studentLogin.generateAuthToken();
-                console.log(token);
-
-
-
-                res.cookie("jwtoken", token, {
-                    expires: new Date(Date.now + 2592000000)
-                });
-
+                const token = jwt.sign({_id:studentLogin._id}, process.env.SECRET_KEY)
                                 if(!isMatch){
                                     res.status(422).json({ error: "Details dont match"});
                                 }
                                 else{
-                                    res.status(200).json({ message: "Login Successfull"});
+                                    res.json({token});
                                 }
                     }
             else{
@@ -144,13 +136,12 @@ router.post('/student-login', async (req, res) =>{
 
 
 
-
 //Login faculty here DONT forget to add JWT also 
 router.post('/faculty-login', async (req, res) =>{
     console.log(req.body);
     try{
         //shall be used while JWT
-        let token;
+        
         const {email, password} = req.body;
         if(!email || !password){
             return res.status(402).json({error: "enter details properly"});
@@ -163,19 +154,13 @@ router.post('/faculty-login', async (req, res) =>{
                 const isMatch = await bcrypt.compare(password, facultyLogin.password);
 
                 //include JWtoken here
-                token = await facultyLogin.generateAuthToken();
-                console.log(token);
-
-
-                res.cookie("jwtoken", token, {
-                    expires: new Date(Date.now + 2592000000)
-                });
+                const token = jwt.sign({_id:facultyLogin._id}, process.env.SECRET_KEY)
 
                                 if(!isMatch){
                                     res.status(422).json({ error: "Details dont match"});
                                 }
                                 else{
-                                    res.status(200).json({ message: "Login Successfull"});
+                                    res.json({token})
                                 }
                     }
             else{
@@ -192,24 +177,22 @@ router.post('/faculty-login', async (req, res) =>{
 
 
 
+
+
+
+
+
+
 //OtherPages here
-router.get('/contact', middleware, (req, res)=>{
-    res.cookie("Test", 'thapa');
-    res.send("Here you are CONTACT");
-    
-    console.log("contact");
-}
-);
 router.get('/about', authenticate, (req, res)=>{
     res.send("Here you are ABOUT");
 }
 );
 
-router.get('/student', authenticate, (req, res)=>{
+router.get('/student',(req, res)=>{
     res.send("Here you are ABOUT");
 }
 );
-
 
 //homepage
 router.get('/', (req, res)=>{

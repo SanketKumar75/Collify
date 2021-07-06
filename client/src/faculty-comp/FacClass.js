@@ -9,6 +9,15 @@ import Discussion from './Disscussion';
 
 
 const FacClass = () => {
+
+    const res = fetch('/faculty/INclass', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            
+        }
+    });
+
     return (
         <>
         <div>

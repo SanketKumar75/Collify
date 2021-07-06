@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Navlink, useHistory} from 'react-router-dom';
 
 
-const StLogin = () => {
+const FacLogin = () => {
 
     const history = useHistory();
 
@@ -26,6 +26,7 @@ const StLogin = () => {
                 })
             });
             const data = await res.json();
+            
 
             if(res.status === 402 || !data){
                 window.alert(`Invalid Registeration ${res.status}`);
@@ -35,9 +36,11 @@ const StLogin = () => {
             window.alert(`Invalid Registeration ${res.status}`);
             else if(res.status === 200){
 
-            window.alert(`Yup Login succe3ssfull  ${res.status}`);
-            console.log("Yup Login succe3ssfull ");
-            history.push("/faculty")
+                localStorage.setItem("jwt", data.token)
+                localStorage.setItem("user", JSON.stringify(data))
+                window.alert(`Yup Login succe3ssfull  ${res.status}`);
+                console.log("Yup Login succe3ssfull ");
+                history.push("/faculty")
             }
         }
 
@@ -60,4 +63,4 @@ const StLogin = () => {
         </>
     )
 }
-export default StLogin
+export default FacLogin

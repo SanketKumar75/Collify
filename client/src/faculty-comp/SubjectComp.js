@@ -9,7 +9,9 @@ const Subject = () => {
     useEffect(() =>{
             fetch('/allclass',{
                 headers: {
-                    "Content-Type":"application/json"
+                    
+                    "Content-Type":"application/json",
+                    "Authorization": "Bearer "+localStorage.getItem("jwt")
                 }
             }).then(res=>res.json())
             .then(result =>{
@@ -17,6 +19,8 @@ const Subject = () => {
                 setData(result.classes)
             })
     }, [])
+
+    
     
 
 

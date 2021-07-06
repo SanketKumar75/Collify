@@ -2,13 +2,16 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+const  authenticate = require('../middleware/authenticate')
+const  Sauthenticate = require('../middleware/Sauthenticate')
 
 //include database and class schema
 require('../db/database');
 
+//schema-s here
 const Clas = require("../models/classSchema");
-
+const Student = require("../models/sSchema");
+const Faculty = require("../models/fSchema");
 
 // Shit
 const middleware = (req, res, next)=>{
@@ -19,13 +22,14 @@ const middleware = (req, res, next)=>{
 
 
 //get request for test
-router.get('/faculty/create-class', (req, res) =>{
+router.get('/faculty/create-class', authenticate, (req, res) =>{
     res.send("You are here bcoz you wanted to create class ..")
 })
-//All classes for showing  =>SubjectComp.js
-router.get('/allclass', (req, res) =>{
+
+
+//Faculty All classes for showing  =>SubjectComp.js
+router.get('/allclass', authenticate , (req, res) =>{
     Clas.find()
-    .populate("name", "_id subject")
     .then(classes=>{
         res.json({classes})
     })
@@ -33,6 +37,20 @@ router.get('/allclass', (req, res) =>{
         console.log(err)
     })
 })
+
+
+//Student All classes for showing  =>SubjectComp.js
+router.get('/Sallclass', Sauthenticate , (req, res) =>{
+    Clas.find()
+    .then(classes=>{
+        res.json({classes})
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+})
+
+
 
 //properly working create request /faculty/create-class
 router.post('/faculty/create-class', async (req, res) =>{
@@ -67,17 +85,13 @@ router.post('/faculty/create-class', async (req, res) =>{
 
 //ForEach Subject create a div box
 router.post('/faculty/get-class',  (req, res) =>{
-    
-        try{
-            db.Clas.find().forEach( res.body("HEllo") );
 
-            
-        }
-        catch(err){
-            console.log(err);
-        }
 }) 
 
+//In side the subject
+router.post('/faculty/INclass',authenticate,  (req, res) =>{
+    res.send(" You are in the class")    
+}) 
 
 //Notes
 
