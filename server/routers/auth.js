@@ -109,6 +109,9 @@ router.post('/student-login', async (req, res) =>{
             return res.status(402).json({error: "enter details properly"});
         }
         const studentLogin = await Student.findOne({email: email});
+
+
+
         console.log(studentLogin);
 
             if(studentLogin){
@@ -116,12 +119,14 @@ router.post('/student-login', async (req, res) =>{
                 const isMatch = await bcrypt.compare(password, studentLogin.password);
 
                 //include JWtoken here
-                const token = jwt.sign({_id:studentLogin._id}, process.env.SECRET_KEY)
+                
                                 if(!isMatch){
                                     res.status(422).json({ error: "Details dont match"});
                                 }
                                 else{
-                                    res.json({token});
+                                    const token = jwt.sign({_id:studentLogin._id}, process.env.SECRET_KEY)
+                                   // res.json({token, studentLogin:{_id, email}});
+                                   res.json({token, studentLogin});
                                 }
                     }
             else{
@@ -154,13 +159,14 @@ router.post('/faculty-login', async (req, res) =>{
                 const isMatch = await bcrypt.compare(password, facultyLogin.password);
 
                 //include JWtoken here
-                const token = jwt.sign({_id:facultyLogin._id}, process.env.SECRET_KEY)
+               
 
                                 if(!isMatch){
                                     res.status(422).json({ error: "Details dont match"});
                                 }
                                 else{
-                                    res.json({token})
+                                    const token = jwt.sign({_id:facultyLogin._id}, process.env.SECRET_KEY)
+                                    res.json({token, facultyLogin})
                                 }
                     }
             else{

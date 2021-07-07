@@ -40,7 +40,7 @@
   margin-left: 10%;
   align-self: center;
   text-align: center;
-  background: red;
+  background: rgba(92, 83, 96, 0.497);
   border-radius: 10px;
   justify-content: center;
   height: 500px;
@@ -56,7 +56,7 @@
   margin: 0% 0% 0% 0% ;
   border-radius: 5px;
   border: 10px;
-  background: orange;
+  background: rgba(161, 145, 181, 0.571);
   min-height: 20%;
   display: flex;
   flex-direction: row;
@@ -119,9 +119,16 @@
   border-radius: 10px;
   background: none;
   height: 100px;
+  text-decoration: black;
 }
 .Option h4{
+  text-decoration: black;
   margin-top: 10%;
   margin-left: 20%;
 }
 
+button{
+  border: 0 0 0 0;
+  border: 2px;
+  background: rgba(14, 13, 8, 0.571);
+}

@@ -29,7 +29,12 @@ router.get('/faculty/create-class', authenticate, (req, res) =>{
 
 //Faculty All classes for showing  =>SubjectComp.js
 router.get('/allclass', authenticate , (req, res) =>{
-    Clas.find()
+    
+    //const localName = localStorage.getItem("name");
+    //console.log(localName)
+    
+
+    const clas = Clas.find()
     .then(classes=>{
         res.json({classes})
     })
@@ -37,8 +42,6 @@ router.get('/allclass', authenticate , (req, res) =>{
         console.log(err)
     })
 })
-
-
 //Student All classes for showing  =>SubjectComp.js
 router.get('/Sallclass', Sauthenticate , (req, res) =>{
     Clas.find()
@@ -49,6 +52,7 @@ router.get('/Sallclass', Sauthenticate , (req, res) =>{
         console.log(err)
     })
 })
+
 
 
 
@@ -90,7 +94,10 @@ router.post('/faculty/get-class',  (req, res) =>{
 
 //In side the subject
 router.post('/faculty/INclass',authenticate,  (req, res) =>{
-    res.send(" You are in the class")    
+    // const classObj = Clas.find()
+    // res.json(classObj) 
+    
+
 }) 
 
 //Notes

@@ -5,6 +5,8 @@ import {NavLink} from 'react-router-dom';
 
 const Subject = () => {
 
+    const localBatch = localStorage.getItem("batch")
+
     const [data, setData] = useState([])
     useEffect(() =>{
             fetch('/allclass',{
@@ -35,9 +37,11 @@ const Subject = () => {
                 {
                     data.map(item=>{
 
+                        if(item.batch === localBatch) 
                     return(
                        
-                        <NavLink className="nav-link" to="/student/class">
+                         
+                        <NavLink className="nav-link" to="/faculty/class">
                         <div className="SubId">
                         <div className="Details">
                             <h6>{item.faculty}</h6>

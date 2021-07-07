@@ -1,3 +1,6 @@
+
+
+
 import React, {useState, useEffect} from 'react';
 import {NavLink} from 'react-router-dom';
 
@@ -5,6 +8,9 @@ import {NavLink} from 'react-router-dom';
 
 const Subject = () => {
 
+    
+    const localName = localStorage.getItem("name");
+    
     const [data, setData] = useState([])
     useEffect(() =>{
             fetch('/allclass',{
@@ -16,14 +22,38 @@ const Subject = () => {
             }).then(res=>res.json())
             .then(result =>{
                 console.log(result)
-                setData(result.classes)
+                console.log(localName);
+                console.log(result.classes[2].faculty)
+                // for(let i=0; i<data.length; i++){
+                //     if(localName === result.classes[i].faculty)
+                //     { setData(result.classes[i])}
+                // }
+                        //if(localName === result.classes.faculty)
+                        setData(result.classes)
             })
     }, [])
 
-    
+
     
 
+    // const postData = async (e) =>{
+    //     e.preventDefault();
 
+        
+    //     const res = await fetch('/INclass', {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Authorization": "Bearer "+localStorage.getItem("jwt")
+    //         },
+    //         body: JSON.stringify({
+                
+    //         })
+            
+    //     });
+    // }
+
+    
     return (
         <>
         
@@ -35,9 +65,12 @@ const Subject = () => {
                 {
                     data.map(item=>{
 
+
+                        if(item.faculty === localName)  
                     return(
                        
-                        <NavLink className="nav-link" to="/faculty/class">
+                          // key = {data.id}
+                        <NavLink className="nav-link" to="/student/class" >
                         <div className="SubId">
                         <div className="Details">
                             <h6>{item.faculty}</h6>

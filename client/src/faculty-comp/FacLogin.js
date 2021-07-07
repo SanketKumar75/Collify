@@ -37,6 +37,9 @@ const FacLogin = () => {
             else if(res.status === 200){
 
                 localStorage.setItem("jwt", data.token)
+                localStorage.setItem("name", data.facultyLogin.name)
+                localStorage.setItem("email", data.facultyLogin.email)
+                localStorage.setItem("ID", data.facultyLogin._id)
                 localStorage.setItem("user", JSON.stringify(data))
                 window.alert(`Yup Login succe3ssfull  ${res.status}`);
                 console.log("Yup Login succe3ssfull ");
