@@ -1,27 +1,30 @@
 import React from 'react';
-import FacClass from './FacClass';
+
 import {Route} from 'react-router-dom';
 import FacLogin from './FacLogin';
 import Navbar from './FacultyHomePage';
 import Signup from './Fsignup'
 import Subject from './SubjectComp';
+//If needed any time
+import FacClass from './FacClass';
 import Notes from './Notes';
 import Assignment from './Assignment';
 import Discussion from './Disscussion';
 
 
 const FacultyHome = () => {
+
+
+    
+
     return (
         <>
-        <Navbar />
+        
         <div>
             <h2>Faculty'sPage</h2>
         </div>
         <Route  exact path="/faculty">
         <Subject />
-        </Route>
-        <Route  exact path="/faculty/class">
-        <FacClass />
         </Route>
         <Route  exact path="/faculty/login">
         <FacLogin />
@@ -29,7 +32,9 @@ const FacultyHome = () => {
         <Route path="/faculty/signup">
             <Signup />
         </Route>
-
+        <Route  exact path="/faculty/class">
+        <FacClass />
+        </Route>
         <Route  exact path="/faculty/notes">
         <Notes />
         </Route>
@@ -37,8 +42,11 @@ const FacultyHome = () => {
         <Assignment />
         </Route>
         <Route path="/faculty/disscussion">
-            <Discussion />
+        <Discussion />
         </Route>
+        
+
+
         </>
     )
 }

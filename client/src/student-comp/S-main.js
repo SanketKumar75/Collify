@@ -10,12 +10,12 @@ import Notes from './Notes';
 import Assignment from './Assignment';
 import Discussion from './Discussion';
 
-
+//add Navbar
 
 const StudentHome = () => {
     return (
        <>
-       <Navbar />
+       
         <div>
          <h2>Student'sPage</h2>
         </div>

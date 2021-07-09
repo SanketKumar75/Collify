@@ -1,15 +1,21 @@
 
-
-
 import React, {useState, useEffect} from 'react';
-import {NavLink} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
+
+//child components
+import FacClass from './FacClass';
+import Notes from './Notes';
+import Assignment from './Assignment';
+import Discussion from './Disscussion';
+
 
 
 
 const Subject = () => {
 
-    
     const localName = localStorage.getItem("name");
+    localStorage.removeItem("classID")
+    localStorage.removeItem("classObj")
     
     const [data, setData] = useState([])
     useEffect(() =>{
@@ -22,8 +28,8 @@ const Subject = () => {
             }).then(res=>res.json())
             .then(result =>{
                 console.log(result)
-                console.log(localName);
-                console.log(result.classes[2].faculty)
+                // console.log(localName);
+                // console.log(result.classes[2].faculty)
                 // for(let i=0; i<data.length; i++){
                 //     if(localName === result.classes[i].faculty)
                 //     { setData(result.classes[i])}
@@ -33,27 +39,6 @@ const Subject = () => {
             })
     }, [])
 
-
-    
-
-    // const postData = async (e) =>{
-    //     e.preventDefault();
-
-        
-    //     const res = await fetch('/INclass', {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "Authorization": "Bearer "+localStorage.getItem("jwt")
-    //         },
-    //         body: JSON.stringify({
-                
-    //         })
-            
-    //     });
-    // }
-
-    
     return (
         <>
         
@@ -64,39 +49,59 @@ const Subject = () => {
             
                 {
                     data.map(item=>{
+                        const postData = async (e) =>{
+                            localStorage.setItem("classID", item._id)
+                            localStorage.setItem("classObj", JSON.stringify(item))
 
+                            console.log(item)
+                        
+                        // const res = await fetch('/INclass', {
+                        //     method: "POST",
+                        //     headers: {
+                        //         "Content-Type": "application/json",
+                        //         "Authorization": "Bearer "+localStorage.getItem("jwt")
+                        //     },
+                        //     body: JSON.stringify({
+                        //         item
+                        //     })
+                            
+                        // });
+                         }
 
                         if(item.faculty === localName)  
-                    return(
-                       
-                          // key = {data.id}
-                        <NavLink className="nav-link" to="/student/class" >
-                        <div className="SubId">
-                        <div className="Details">
-                            <h6>{item.faculty}</h6>
-                                <br></br>
-                            <h6>{item.batch}</h6>
-        
-                        </div>
-                        <h4 className="subName">{item.subject}</h4>
-                        <div className="joinClass">
-                        <button >Take Class</button>
-                        </div>
-                        </div>
-                        </NavLink>
-                        
-                    )
+                        {        
+                            const classObj = item;
+                            return(
+                                <>
+                                <div>
+                                
+                                </div>
+                            
+                                
+                                <Link className="nav-link" to="/faculty/class" onClick={postData} >
+                                <div className="SubId">
+                                <div className="Details">
+                                    <h6>{item.faculty}</h6>
+                                        <br></br>
+                                    <h6>{item.batch}</h6>
+                
+                                </div>
+                                <h4 className="subName">{item.subject}</h4>
+                                <div className="joinClass">
+                                <button onClick={postData}>Take Class</button>
+                                </div>
+                                </div>
+                                </Link>
+                                </>
+                                
+                            )}
                     }
                     )
-                }
-                
-            
-           
-            
-                
-
-            
+                }    
         </div>
+
+
+
     </>
     )
 }

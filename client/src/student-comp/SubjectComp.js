@@ -6,6 +6,8 @@ import {NavLink} from 'react-router-dom';
 const Subject = () => {
 
     const localBatch = localStorage.getItem("batch")
+    localStorage.removeItem("classID")
+    localStorage.removeItem("classObj")
 
     const [data, setData] = useState([])
     useEffect(() =>{
@@ -36,22 +38,28 @@ const Subject = () => {
             
                 {
                     data.map(item=>{
+                        const postData = async (e) =>{
+                            localStorage.setItem("classID", item._id)
+                            localStorage.setItem("classObj", JSON.stringify(item))
+
+                            console.log(item)
+                        }
 
                         if(item.batch === localBatch) 
                     return(
                        
                          
-                        <NavLink className="nav-link" to="/faculty/class">
+                        <NavLink className="nav-link" to="/student/class" onClick={postData}>
                         <div className="SubId">
                         <div className="Details">
-                            <h6>{item.faculty}</h6>
+                        <h6>Batch:  {item.batch}</h6>
                                 <br></br>
-                            <h6>{item.batch}</h6>
+                            <h6>By {item.faculty}</h6>
         
                         </div>
-                        <h4 className="subName">{item.subject}</h4>
+                        <h4 className="subName"> <h6>Subject:</h6> {item.subject}</h4>
                         <div className="joinClass">
-                        <button >Take Class</button>
+                        <button onClick={postData}>Join Class</button>
                         </div>
                         </div>
                         </NavLink>

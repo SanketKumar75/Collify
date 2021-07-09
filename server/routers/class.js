@@ -92,10 +92,20 @@ router.post('/faculty/get-class',  (req, res) =>{
 
 }) 
 
+
+
 //In side the subject
-router.post('/faculty/INclass',authenticate,  (req, res) =>{
+router.post('/faculty/INclass', async (req, res) =>{
     // const classObj = Clas.find()
     // res.json(classObj) 
+    
+    const {_id} = req.body;
+    console.log(_id)
+
+    const classFetch = await Clas.findOne({_id:_id})
+    
+    res.json(classFetch)
+    console.log(classFetch)
     
 
 }) 
