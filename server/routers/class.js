@@ -132,6 +132,15 @@ router.post('/faculty/uploadnote', async (req, res)=>{
     res.json(postTo)
     })
 
+//getting the notes
+router.post('/getnotes', async (req, res)=> {
+    const {_id} = req.body;
+    console.log(_id)
+    
+    const notesFetch = await Clas.findOne({_id:_id})
+    const notesList = notesFetch.notes;
+    res.json(notesList)
+})
 
 
 // for videos or other stuff

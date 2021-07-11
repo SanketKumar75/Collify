@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 import {Route} from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
-
+import PrevNotes from './PrevNotes';
 
 
 
@@ -153,12 +153,7 @@ const Notes = () => {
                  
                 </div>
                 <div className="w-50 h-100 mt-50">
-                <br/>
-                <h5  className="ml-5"> Previous Notes by Prof. {classData.faculty}</h5>
-                <div class="border rounded  border-1 border-info mr-auto ml-auto mt-5 h-75 w-75 bg-light">
-                    <h6 className="ml-2"> here are your previously 
-                     uploaded marks and stuff</h6>
-                    </div>                
+                <PrevNotes/>           
                 </div>
             </div>
         </>

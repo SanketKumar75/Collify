@@ -78,7 +78,7 @@ const Subject = () => {
                                 </div>
                             
                                 
-                                <Link className="nav-link" to="/faculty/class" onClick={postData} >
+                                <Link className="nav-link text-dark" to="/faculty/class" onClick={postData} >
                                 <div className="SubId">
                                 <div className="Details">
                                     <h6>{item.faculty}</h6>

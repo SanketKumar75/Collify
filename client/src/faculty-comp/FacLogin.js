@@ -15,7 +15,7 @@ const FacLogin = () => {
         const postData = async (e) =>{
             e.preventDefault();
 
-            
+        
             const res = await fetch('/faculty-login', {
                 method: "POST",
                 headers: {
