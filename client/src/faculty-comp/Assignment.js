@@ -61,12 +61,11 @@ const Assignment = () => {
                         <div class="col-8">
                             <input type="text" id="" className="form-control" aria-describedby=""  placeholder="Topic for the assignment" />
                         </div>
-                        <div class="col-auto
-                        ">
+                        <div class="col-auto">
                             
                         </div>
                         </div>
-                        <br />                        <label for="inputPassword6" class="col-form-label">Due Time</label>
+                        <br />                        <label for="inputPassword" class="col-form-label">Due Time</label>
                         <input type="date"  className=" ml-2 col-form-control" aria-describedby="" />
                         <input type="time"  className=" ml-2 col-form-control" aria-describedby="" />
                         <div className="mb-3">

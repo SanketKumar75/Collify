@@ -85,8 +85,6 @@ router.post('/faculty/create-class', async (req, res) =>{
     }
 
 });
-
-
 //ForEach Subject create a div box
 router.post('/faculty/get-class',  (req, res) =>{
 
@@ -105,15 +103,37 @@ router.post('/faculty/INclass', async (req, res) =>{
     const classFetch = await Clas.findOne({_id:_id})
     
     res.json(classFetch)
-    console.log(classFetch)
+    
     
 
 }) 
+
+
 
 //Notes
 
 
 //for uploading Notes
+router.post('/faculty/uploadnote', async (req, res)=>{
+    const {title, url, _id} = req.body
+    if(!title || !url ){
+        console.log(title, url, _id)
+        return res.status(422).json({error: "Title or file not added"})
+        
+    }
+
+
+    
+    const postTo = await Clas.findOne({_id: _id})
+    postTo.notes = postTo.notes.concat({note: url, title: title})
+
+    await postTo.save()
+    console.log("Successfully uploaded")
+    res.json(postTo)
+    })
+
+
+
 // for videos or other stuff
 
 

@@ -32,6 +32,8 @@ app.post('/faculty/upload', (req, res) =>{
         return res.status(400).json({error: "No file chosen"});
 
     }
+    data = req.body
+    console.log(data)
     const file = req.files.file;
 
     file.mv(`${__dirname}/../client/public/uploads/${file.name}`, err =>{
@@ -42,6 +44,7 @@ app.post('/faculty/upload', (req, res) =>{
         }
     });
 
+    
     res.json({fileName: file.name, filePath: `/uploads/${file.name}`});
 })
 

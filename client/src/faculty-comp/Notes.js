@@ -10,15 +10,22 @@ import {NavLink} from 'react-router-dom';
 
 
 const Notes = () => {
+    //There three are for Uploading notes
+    const [title, settitle] = useState("")
+    const [file, setfile] = useState("")
+    const [url, seturl] = useState("")
+
+    //This is for the getting the class object 
     const [classData, setclassData] = useState({})
 
 
     const classObj = (localStorage.getItem("classObj"))
     const _id = (localStorage.getItem("classID"))
-    console.log(classObj)
+    // console.log(classObj)
     console.log(_id)
 
 
+    //fetching the class/subjects object from DB using the classID from the local storage
     useEffect(() =>{
     fetch('/faculty/INclass',  {
         method: "POST",
@@ -38,7 +45,66 @@ const Notes = () => {
     }, [])
 
 
-    
+
+    //Notes Upload
+    useEffect(()=>{
+        if(url){
+        fetch("/faculty/uploadnote", {
+            method:"post",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                title,
+                url,
+                _id
+            })
+        })
+        .then(res=>res.json())
+        .then(result=>{
+            const data = result
+            if(data.error){
+                window.alert("Unable to upload to the server")
+                console.log("No response from /faculty/uploadnote")
+            }
+            else{
+                
+                window.alert("Notes uploaded successfully")
+                
+            }
+        })
+        }
+    }, [url])
+    const PostNotes =()=>{
+   
+        
+        // let filepath
+        const data = new FormData()
+        data.append("file", file)
+        fetch("/faculty/upload",{
+            method: "post",
+            body:data
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            
+             const filepath = data.filePath;
+            seturl(filepath);
+            // localStorage.setItem("filepath", data.filePath)
+            console.log(filepath)
+            console.log(url)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+        
+        //  const url = localStorage.getItem("filepath")
+        //  localStorage.removeItem("filepath")
+        
+        
+   
+    }
+
     return (
         
         <>
@@ -63,13 +129,27 @@ const Notes = () => {
                     <center><h3 className="w-75 h-25"> Upload Notes for {classData.batch} batch</h3></center>
                     <br/>
                     <div className="mb-3">
-                  
-                    <input className="form-control w-75 mr-auto ml-auto" type="file" id="formFile" />
+                    <input type="text" 
+                    className="form-control w-50 mr-auto ml-auto" 
+                    placeholder="Title"
+                    value={title}
+                    onChange={(e)=>{e.preventDefault(); settitle(e.target.value)}}/>
+                    <br/>
+
+                    <input className="form-control w-75 mr-auto ml-auto" 
+                    type="file"  
+                    onChange= {PostNotes, (e)=>{ e.preventDefault(); setfile(e.target.files[0])}}
+                    />
                     </div>
 
                     <div className=" mr-auto ml-auto mt-5 h-25 w-50 bg-light">
-                    <button type="button" className="btn btn-primary mr-auto ml-auto h-50">Upload New Notes</button>
+                    <button 
+                    type="button" 
+                    className="btn btn-primary mr-auto ml-auto h-50"
+                    onClick={()=>PostNotes() }
+                    >Upload Notes</button>
                     </div>
+                    
                  
                 </div>
                 <div className="w-50 h-100 mt-50">

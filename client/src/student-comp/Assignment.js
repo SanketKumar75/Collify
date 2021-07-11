@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom';
 
 
 const Assignment = () => {
-
+      
     const [classData, setclassData] = useState({})
 
 
