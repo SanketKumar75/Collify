@@ -12,7 +12,7 @@ const StprevNotes = () => {
     const classObj = (localStorage.getItem("classObj"))
     const _id = (localStorage.getItem("classID"))
     // console.log(classObj)
-    console.log(_id)
+    
 
 
     //fetching the class/subjects object from DB using the classID from the local storage
@@ -50,7 +50,7 @@ const StprevNotes = () => {
             })
             const data = await res.json();
                 setnoteList(data)
-                console.log(noteList)
+                
             // .then(res=>res.json())
             // .then(result =>{
             //     console.log(result)

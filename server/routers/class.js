@@ -98,7 +98,7 @@ router.post('/faculty/INclass', async (req, res) =>{
     // res.json(classObj) 
     
     const {_id} = req.body;
-    console.log(_id)
+    
 
     const classFetch = await Clas.findOne({_id:_id})
     
@@ -135,7 +135,7 @@ router.post('/faculty/uploadnote', async (req, res)=>{
 //getting the notes
 router.post('/getnotes', async (req, res)=> {
     const {_id} = req.body;
-    console.log(_id)
+    
     
     const notesFetch = await Clas.findOne({_id:_id})
     const notesList = notesFetch.notes;

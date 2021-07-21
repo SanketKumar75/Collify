@@ -11,8 +11,8 @@ const StClass = () => {
 
     const classObj = (localStorage.getItem("classObj"))
     const _id = (localStorage.getItem("classID"))
-    console.log(classObj)
-    console.log(_id)
+    
+   
 
 
     useEffect(() =>{
@@ -29,7 +29,7 @@ const StClass = () => {
             .then(result =>{
     
                 setclassData(result)
-                console.log(result)
+               
             })
         }, [])
 
