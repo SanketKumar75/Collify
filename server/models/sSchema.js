@@ -34,6 +34,23 @@ const sSchema  = new mongoose.Schema({
                 required: true
             }
         }
+    ],
+    submits:[
+        {
+            class:{
+                type: String
+            },
+            submit:{
+                type: String,
+                required: true
+            }, 
+            assignment:{
+                type: String
+            },
+            mark:{
+                type: Number
+            }
+        }
     ]
 
 })

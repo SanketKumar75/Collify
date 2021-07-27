@@ -32,6 +32,22 @@ const classSchema  = new mongoose.Schema({
             }
         }
     ],
+    assigns:
+    [
+        {
+            assign:{
+                type: String,
+                required: true
+            },
+            title:{
+                type: String
+            }, 
+            // due:{
+            //     type: Time
+            // }
+            
+        }
+    ],
     record: [
         {
             video:{

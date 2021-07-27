@@ -80,7 +80,7 @@ const PrevNotes = () => {
                             
                             return(
                                 <>
-                                <Link className="nav-link border-bottom" to= {item.note} target="_blank" rel="noopener noreferrer">
+                                <Link className="nav-link border-bottom" to= {item.note + "#toolbar=0"} target="_blank" rel="noopener noreferrer">
                                 <div className= "mt-2 ml-2">
                                 <div className="row  ">
                                 <img className="col-2 w-5 ml-3 pdf"src={pdf} alt="pdf" width="50" height="60"/>
@@ -88,8 +88,17 @@ const PrevNotes = () => {
                                 </div>
                                 <p className="ml-2 text-dark">{name}</p>
                                 
+                                
                                 </div>   
+
                                 </Link>
+
+
+                                {/* <embed className="noSelect" src={item.note+ "#toolbar=0" } width="800px" height="2100px" >
+                           
+                                </embed> */}
+                                
+
                                 </>
                             )
 
