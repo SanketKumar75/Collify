@@ -39,12 +39,16 @@ const classSchema  = new mongoose.Schema({
                 type: String,
                 required: true
             },
-            title:{
+            topic:{
                 type: String
             }, 
-            // due:{
-            //     type: Time
-            // }
+            due:{
+                type: String
+            },
+            mark:{
+                type: Number,
+                required: false
+            }
             
         }
     ],

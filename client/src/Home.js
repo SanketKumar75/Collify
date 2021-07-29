@@ -1,6 +1,13 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 const Home = () => {
+
+
+    window.onunload = () => {
+        // Clear the local storage
+        window.MyStorage.clear()
+     }
+     
     return (
         <>
         <div >

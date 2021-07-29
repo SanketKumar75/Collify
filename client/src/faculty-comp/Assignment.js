@@ -1,14 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import {Route} from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
-
-
+import Datetime from 'react-datetime';
+import "react-datetime/css/react-datetime.css";
+import Calender from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 const Assignment = () => {
 
     const [classData, setclassData] = useState({})
 
+    //for upload
+    const [topic, setTopic] = useState("")
+    const [date, setDate] = useState(new Date())
+    const [file, setFile] = useState("")
+    const [url, setUrl] = useState("")
 
+    //local storge for ID
     const classObj = (localStorage.getItem("classObj"))
     const _id = (localStorage.getItem("classID"))
     console.log(classObj)
@@ -33,7 +41,66 @@ const Assignment = () => {
         })
     }, [])
 
+    const changeDate = (e) => {
+        setDate(e)
+      }
+    //Notes Upload
+    
+    
+    
+   
+    const PostNotes =()=>{
+        // let filepath
+        const data = new FormData()
+        data.append("file", file)
+        fetch("/faculty/upload",{
+            method: "post",
+            body:data
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            
+             const filepath = data.filePath;
+            setUrl(filepath);
+            // localStorage.setItem("filepath", data.filePath)
+            console.log(url)
+            console.log(date)
+        })
+        .catch(err=>{
+            console.log(err)
+        })}
 
+
+
+        useEffect(()=>{
+            if(url){
+            fetch("/faculty/uploadassign", {
+                method:"post",
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    topic, 
+                    date, url,
+                    _id
+                })
+            })
+            .then(res=>res.json())
+            .then(result=>{
+                const data = result
+                if(data.error){
+                    window.alert("Unable to upload to the server")
+                    console.log("No response from /faculty/uploadassignment")
+                }
+                else{
+                    
+                    window.alert("Notes uploaded successfully")
+                    
+                }
+            })
+            
+        }}, [url])
+    
 
     return (
         <>
@@ -59,31 +126,52 @@ const Assignment = () => {
                             <label for="inputPassword6" class="col-form-label">Topic</label>
                         </div>
                         <div class="col-8">
-                            <input type="text" id="" className="form-control" aria-describedby=""  placeholder="Topic for the assignment" />
+                            <input 
+                            type="text" id="" name="topic"
+                            className="form-control"
+                             value={topic}
+                             onChange={(e)=> setTopic(e.target.value)}
+                              aria-describedby=""  placeholder="Topic for the assignment" />
                         </div>
-                        <div class="col-auto">
-                            
                         </div>
-                        </div>
-                        <br />                        <label for="inputPassword" class="col-form-label">Due Time</label>
-                        <input type="date"  className=" ml-2 col-form-control" aria-describedby="" />
-                        <input type="time"  className=" ml-2 col-form-control" aria-describedby="" />
-                        <div className="mb-3">
-                  
-                        <input className="form-control w-75 mr-auto ml-1 mt-2" type="file" id="formFile" />
+                        <br /> 
+
+                        <div className="col-5">                       
+                        <label for="inputPassword" class="col-form-label">Due Time</label>
                         </div>
 
-                    <button type="button" className="col btn btn-primary ml-0 mt-5">Create Assignment</button>
+                        <div className="col-auto">
+                         {/* <Datetime
+                            className=""
+                            name="date"
+                            dateFormat="DD-MM-21"
+                            initialViewDate= {new Date()} 
+                            value={date}
+                            onChange={(e)=> setDate(e.target.date)}
+
+                         /> */}
+                         <Calender 
+                         className="h-50 w-50" 
+                         defaultView="date"
+                         value={date}
+                        onChange={changeDate}
+                         />
+                         </div>
+
+                        <div className="mb-3">
+                        <input className="form-control w-75 mr-auto ml-1 mt-2 calander" 
+                        
+                         onChange={(e)=>setFile(e.target.files[0])}
+                          type="file" id="formFile" />
+                        </div>
+
+                    <button type="button" onClick={()=> PostNotes()} className="col btn btn-primary ml-0 mt-5">Create Assignment</button>
                     </div>
                 </div>
 
-
-
-
-
-                <div className="w-50 h-100 mt-2  border border-top-0 border-start-1 border-bottom-0 border-end-0">
-                <h5  className="ml-5"> Old assignments</h5>
-                <div class="border rounded  border-1 border-info mr-auto ml-auto mt-5 h-75 w-75 bg-light">
+                    <div className="w-50 h-100 mt-2  border border-top-0 border-start-1 border-bottom-0 border-end-0">
+                    <h5  className="ml-5"> Old assignments</h5>
+                    <div class="border rounded  border-1 border-info mr-auto ml-auto mt-5 h-75 w-75 bg-light">
                     <h6 className="ml-2"> previous assignments</h6>
                     </div>                
                 </div>
