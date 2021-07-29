@@ -5,6 +5,7 @@ import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 import Calender from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import PrevAssign from './assign/prevassign';
 
 const Assignment = () => {
 
@@ -22,9 +23,8 @@ const Assignment = () => {
     console.log(classObj)
     console.log(_id)
 
-
     useEffect(() =>{
-    fetch('/faculty/INclass',  {
+    fetch('/faculty/INclass',   {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -41,15 +41,48 @@ const Assignment = () => {
         })
     }, [])
 
+
+
+
+
+
     const changeDate = (e) => {
         setDate(e)
       }
     //Notes Upload
-    
-    
+    useEffect(()=>{
+        if(url){
+        fetch("/faculty/uploadassign", {
+            method:"post",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                topic, 
+                date, url,
+                _id
+            })
+        })
+        .then(res=>res.json())
+        .then(result=>{
+            const data = result
+            if(data.error){
+                window.alert("Unable to upload to the server")
+                console.log("No response from /faculty/uploadassignment")
+            }
+            else{
+                
+                window.alert("Assignment uploaded successfully")
+                window.location.reload();
+            }
+
+        })
+        
+    }}, [url])
     
    
-    const PostNotes =()=>{
+    const PostNotes =(e)=>{
+        e.preventDefault()
         // let filepath
         const data = new FormData()
         data.append("file", file)
@@ -71,35 +104,7 @@ const Assignment = () => {
         })}
 
 
-
-        useEffect(()=>{
-            if(url){
-            fetch("/faculty/uploadassign", {
-                method:"post",
-                headers:{
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    topic, 
-                    date, url,
-                    _id
-                })
-            })
-            .then(res=>res.json())
-            .then(result=>{
-                const data = result
-                if(data.error){
-                    window.alert("Unable to upload to the server")
-                    console.log("No response from /faculty/uploadassignment")
-                }
-                else{
-                    
-                    window.alert("Notes uploaded successfully")
-                    
-                }
-            })
-            
-        }}, [url])
+        
     
 
     return (
@@ -148,11 +153,10 @@ const Assignment = () => {
                             initialViewDate= {new Date()} 
                             value={date}
                             onChange={(e)=> setDate(e.target.date)}
-
                          /> */}
-                         <Calender 
+                         <Datetime 
                          className="h-50 w-50" 
-                         defaultView="date"
+                         initialViewMode="time"
                          value={date}
                         onChange={changeDate}
                          />
@@ -165,16 +169,11 @@ const Assignment = () => {
                           type="file" id="formFile" />
                         </div>
 
-                    <button type="button" onClick={()=> PostNotes()} className="col btn btn-primary ml-0 mt-5">Create Assignment</button>
+                    <button type="button" onClick={(e)=> PostNotes(e)} className="col btn btn-primary ml-0 mt-5">Create Assignment</button>
                     </div>
                 </div>
 
-                    <div className="w-50 h-100 mt-2  border border-top-0 border-start-1 border-bottom-0 border-end-0">
-                    <h5  className="ml-5"> Old assignments</h5>
-                    <div class="border rounded  border-1 border-info mr-auto ml-auto mt-5 h-75 w-75 bg-light">
-                    <h6 className="ml-2"> previous assignments</h6>
-                    </div>                
-                </div>
+                    <PrevAssign />
             </div>
         </>
     )

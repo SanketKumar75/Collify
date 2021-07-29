@@ -147,7 +147,7 @@ router.post('/getnotes', async (req, res)=> {
 //Assignments route
 router.post('/faculty/uploadassign', async (req, res)=>{
     const {topic, date, url, _id} = req.body
-    if(!topic || !url ){
+    if(!topic || !url || !_id || !date){
         console.log(topic, date, url, _id)
         return res.status(422).json({error: "Title or file not added"})
         
@@ -156,7 +156,7 @@ router.post('/faculty/uploadassign', async (req, res)=>{
     postTo.assigns = postTo.assigns.concat({assign: url, topic: topic, due: date})
 
     await postTo.save()
-    
+
     console.log("Successfully uploaded")
     res.json(postTo.assigns)
     })
