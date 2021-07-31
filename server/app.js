@@ -50,6 +50,29 @@ app.post('/faculty/upload', (req, res) =>{
 
 
 
+//for submissions upload
+app.post('/student/upload/submission', (req, res) =>{
+    if(req.files === null){
+        return res.status(400).json({error: "No file chosen"});
+
+    }
+    data = req.body
+    console.log(data)
+    const file = req.files.file;
+
+    file.mv(`${__dirname}/../client/public/uploads/submission/${file.name}`, err =>{
+        if(err)
+        {
+            console.log(err);
+            return res.status(500).send(err);
+        }
+    });
+
+    
+    res.json({fileName: file.name, filePath: `/uploads/submission/${file.name}`});
+})
+
+
 
 console.log("Yes it works");
 

@@ -19,7 +19,7 @@ const sSchema  = new mongoose.Schema({
     },
     phone: {
     type: Number,
-        required: true
+        required: false
     },
     password: {
         type: String,
@@ -37,24 +37,24 @@ const sSchema  = new mongoose.Schema({
     ],
     submits:[
         {
-            class:{//or assignment _id
-                type: String
-            },
+            // assign_id:{//or assignment _id
+            //     type: String
+            // },
             submit:{ //submission url
                 type: String,
-                required: true
+                
             }, 
-            assignment:{
+            assignment:{// not doing for now assignment _id maybe
                 type: String
             },
-            mark:{
+            mark:{// from faculty
                 type: Number
             },
-            tabchange:{
+            tabchange:{//student ||| Not yet
                 type: Boolean
             },
-            tle:{
-                type: Boolean
+            tle:{//true if time limit exceded for now passing date itself
+                type: Date
             }
         }
     ]

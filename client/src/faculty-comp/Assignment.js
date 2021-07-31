@@ -20,7 +20,6 @@ const Assignment = () => {
     //local storge for ID
     const classObj = (localStorage.getItem("classObj"))
     const _id = (localStorage.getItem("classID"))
-    console.log(classObj)
     console.log(_id)
 
     useEffect(() =>{
@@ -49,7 +48,7 @@ const Assignment = () => {
     const changeDate = (e) => {
         setDate(e)
       }
-    //Notes Upload
+    //Assignment Upload
     useEffect(()=>{
         if(url){
         fetch("/faculty/uploadassign", {

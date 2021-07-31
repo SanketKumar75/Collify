@@ -5,6 +5,105 @@ import pdf from '../../assets/pdf.png'
 
 
 const Ongoing = () => {
+
+    const [classData, setclassData] = useState({})
+
+    //for upload
+    const [tab, setTab] = useState("")
+    const [time, setTime] = useState(new Date())
+    const [file, setFile] = useState("")
+    const [url, setUrl] = useState("")
+
+    const classObj = (localStorage.getItem("classObj"))
+    const class_id = (localStorage.getItem("classID"))
+    const _id = (localStorage.getItem("ID"))
+    console.log(class_id)
+
+    // To check which class in 
+    useEffect(() =>{
+        fetch('/faculty/INclass',   {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer "+localStorage.getItem("jwt")
+             },
+             body: JSON.stringify({
+                 class_id
+             })
+            }).then(res=> res.json())
+            .then(result =>{
+    
+                setclassData(result)
+                console.log(result)
+            })
+        }, [])
+
+
+
+
+
+
+
+        //Submission Upload
+    useEffect(()=>{
+        if(url){
+        fetch("/student/uploadsubmit", {
+            method:"post",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                //assign_id,
+                time, 
+                url,
+                _id
+            })
+        })
+        .then(res=>res.json())
+        .then(result=>{
+            const data = result
+            if(data.error){
+                window.alert("Unable to upload to the server")
+                console.log("No response from /faculty/uploadassignment")
+            }
+            else{
+                
+                window.alert("Assignment uploaded successfully")
+                window.location.reload();
+            }
+
+        })
+        
+    }}, [url])
+
+
+    const PostNotes =(e)=>{
+        e.preventDefault()
+            setTime(new Date())
+        // let filepath
+        const data = new FormData()
+        data.append("file", file)
+        console.log(url)
+        fetch("/student/upload/submission",{
+            method: "post",
+            body:data
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            
+             const filepath = data.filePath;
+            setUrl(filepath);
+            // localStorage.setItem("filepath", data.filePath)
+            console.log(url)
+            console.log(time)
+        })
+        .catch(err=>{
+            console.log(err)
+        })}
+
+
+
+
     return (
         <> 
             {/* <div class="border rounded  border-1 border-info mr-auto ml-auto mt-5 h-25 w-75 bg-light">
@@ -38,12 +137,20 @@ const Ongoing = () => {
                             </Link>
 
                                 <div className="row ">
-                                    <input className=" mt-2 ml-4 col-sm" 
+                                    <input className=" mt-2 ml-4 col-sm"
+                                    onChange={(e)=>setFile(e.target.files[0])} 
                                     type="file"  
+                                    id="formFile" 
+                                    
                                     // onChange= {PostNotes, (e)=>{ e.preventDefault(); setfile(e.target.files[0])}}
                                     />
                                 
-                                        <button type="button" className=" ml-5 btn btn-primary mr-5 mt-2 ">Submit</button>
+                                        <button 
+                                        type="button" 
+                                        className=" ml-5 btn btn-primary mr-5 mt-2 "  
+                                        onClick={(e)=> PostNotes(e)}>
+                                            Submit
+                                        </button>
                                 </div>
                     </div>
                     
