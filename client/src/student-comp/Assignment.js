@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Route} from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
-
-
+import PrevAssign from './assignments/PrevAssigns';
+import Ongoing from './assignments/Ongoing';
 
 const Assignment = () => {
       
@@ -11,7 +11,6 @@ const Assignment = () => {
 
     const classObj = (localStorage.getItem("classObj"))
     const _id = (localStorage.getItem("classID"))
-    console.log(classObj)
     console.log(_id)
 
 
@@ -35,10 +34,7 @@ const Assignment = () => {
 
 
 
-
-
-
-
+    
 
     return (
         <>
@@ -52,16 +48,10 @@ const Assignment = () => {
                 </div>
         </div>
         <center> <h2><h6>Subject</h6>{classData.subject}</h2></center>
-        <div className="Content row">
+        <div className="Content row ">
                 
-        <div class="border rounded  border-1 border-info mr-auto ml-auto mt-5 h-25 w-75 bg-light">
-                    <h6 className="ml-2"> Ongoing assignment</h6>
-                    </div>     
-                <div className="w-100 h-100 mt-5  border border-top-0 border-start-1 border-bottom-0 border-end-0">
-                    <div class="border rounded  border-1 border-info mr-auto ml-auto mt-2 h-50 w-75 bg-light">
-                        <h6 className="ml-2"> previous assignments</h6>
-                        </div>                
-                    </div>
+                <Ongoing />    
+                <PrevAssign />
             </div>
         </>
     )

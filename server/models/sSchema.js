@@ -37,10 +37,10 @@ const sSchema  = new mongoose.Schema({
     ],
     submits:[
         {
-            class:{
+            class:{//or assignment _id
                 type: String
             },
-            submit:{
+            submit:{ //submission url
                 type: String,
                 required: true
             }, 
@@ -49,6 +49,12 @@ const sSchema  = new mongoose.Schema({
             },
             mark:{
                 type: Number
+            },
+            tabchange:{
+                type: Boolean
+            },
+            tle:{
+                type: Boolean
             }
         }
     ]

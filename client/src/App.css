@@ -132,4 +132,14 @@ button{
   border: 2px;
   background: rgba(14, 13, 8, 0.571);
 }
-
+.PdfName{
+  font-size: 10px;
+  
+}
+.test1{
+  background: red;
+}
+.text2{
+  
+  text-align: center;
+}

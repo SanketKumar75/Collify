@@ -85,6 +85,15 @@ router.post('/faculty/create-class', async (req, res) =>{
     }
 
 });
+
+
+
+
+
+
+
+
+
 //ForEach Subject create a div box
 router.post('/faculty/get-class',  (req, res) =>{
 
@@ -107,6 +116,13 @@ router.post('/faculty/INclass', async (req, res) =>{
     
 
 }) 
+
+
+
+
+
+
+
 
 
 
@@ -144,7 +160,16 @@ router.post('/getnotes', async (req, res)=> {
 
 
 
+
+
+
+
+
+
+
 //Assignments route
+
+//upload assignment
 router.post('/faculty/uploadassign', async (req, res)=>{
     const {topic, date, url, _id} = req.body
     if(!topic || !url || !_id || !date){
@@ -161,6 +186,15 @@ router.post('/faculty/uploadassign', async (req, res)=>{
     res.json(postTo.assigns)
     })
 
+//fetch assignment
+router.post('/getassigns', async (req, res)=> {
+    const {_id} = req.body;
+    
+    
+    const assignsFetch = await Clas.findOne({_id:_id})
+    const assignsList = assignsFetch.assigns;
+    res.json(assignsList)
+})
 
 // for videos or other stuff
 

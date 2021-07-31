@@ -43,7 +43,7 @@ const classSchema  = new mongoose.Schema({
                 type: String
             }, 
             due:{
-                type: String
+                type: Date
             },
             mark:{
                 type: Number,

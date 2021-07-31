@@ -84,7 +84,7 @@ const StprevNotes = () => {
                                 <div className= "mt-2 ml-2">
                                 <div className="col">
                                 <img className=" ml-auto mr-auto d-flex justify-content-center "src={pdf} alt="pdf" width="50" height="60"/>
-                                <p className=" mt-1 ml-1 text-body d-flex justify-content-center">{name}</p>
+                                <p className=" mt-1 ml-1 text-body d-flex justify-content-center PdfName">{name}</p>
                                 <h6 className="ml-1 text-dark w-70 d-flex justify-content-center">{item.title}</h6>
                                 </div>
                                 
