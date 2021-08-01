@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const  authenticate = require('../middleware/authenticate')
 const  Sauthenticate = require('../middleware/Sauthenticate')
+const mongoose = require('mongoose');
 
 //include database and class schema
 require('../db/database');
@@ -214,7 +215,22 @@ router.post('/student/uploadsubmit', async (req, res)=>{
     res.json(postTo.submits)
     })
 
-// for videos or other stuff
+    //fetch assignment
+router.post('/getongoingassign', async (req, res)=> {
+    const {class_id} = req.body;
+    console.log(class_id)
+    const assignsFetch = await Clas.findOne({_id:class_id})
+    
+    const assignsList = assignsFetch.assigns;
+    
+    const d = assignsList.filter(list=>{
+        return list.due>= new Date()
+    })
+    const dat = d.due
+    res.json(d)
+    
+})
+// for videos or other stuff 
 
 
 module.exports = router

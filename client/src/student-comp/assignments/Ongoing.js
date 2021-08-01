@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 import pdf from '../../assets/pdf.png'
-
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const Ongoing = () => {
 
-    const [classData, setclassData] = useState({})
-
+    const [classData, setclassData] = useState([])
     //for upload
     const [tab, setTab] = useState("")
     const [time, setTime] = useState(new Date())
@@ -19,13 +19,12 @@ const Ongoing = () => {
     const _id = (localStorage.getItem("ID"))
     console.log(class_id)
 
-    // To check which class in 
+    // get ongoing assignments 
     useEffect(() =>{
-        fetch('/faculty/INclass',   {
+        fetch('/getongoingassign',   {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer "+localStorage.getItem("jwt")
              },
              body: JSON.stringify({
                  class_id
@@ -34,13 +33,12 @@ const Ongoing = () => {
             .then(result =>{
     
                 setclassData(result)
-                console.log(result)
+                console.log(classData)
             })
         }, [])
 
 
-
-
+        
 
 
 
@@ -78,6 +76,9 @@ const Ongoing = () => {
 
 
     const PostNotes =(e)=>{
+
+        if(new Date() > classData[0].due)
+        {
         e.preventDefault()
             setTime(new Date())
         // let filepath
@@ -99,14 +100,15 @@ const Ongoing = () => {
         })
         .catch(err=>{
             console.log(err)
-        })}
+        })
+    }
+    else{
+        window.alert("The time for this assignment is exceeded, submissions no longer be accepted. Contact your faculty to find alternative way to submit")
+    }
+    }
 
 
-
-
-    return (
-        <> 
-            {/* <div class="border rounded  border-1 border-info mr-auto ml-auto mt-5 h-25 w-75 bg-light">
+{/* <div class="border rounded  border-1 border-info mr-auto ml-auto mt-5 h-25 w-75 bg-light">
                     <h6 className="ml-2"> Ongoing assignment</h6>
                     <div className="">
 
@@ -119,43 +121,100 @@ const Ongoing = () => {
                     
                     </div>
                     </div>   */}
-                   <div class="card mr-auto ml-auto mt-2 h-30 w-75">
-                    <div class="d-flex justify-content-between card-header">
-                        Ongoing Assignment
-                        <div className="">
-                            Deadline:
-                        </div>
-                    </div>
-                    <div className="card-body overflow-auto">
-                            <Link className="nav-link border rounded">
-                                <div className="row bd-highlight mb-0">
-                                <img className=" ml-4  col-0 "src={pdf} alt="pdf" width="40" height="50"/>
-                                
-                                <h5 className="card-title ml-5 col-sm text2 text-dark">Special title treatment</h5>
-                                </div>
-                                <p className="PdfName mb-1  text-dark">Filw name here<br/></p>
-                            </Link>
 
-                                <div className="row ">
-                                    <input className=" mt-2 ml-4 col-sm"
-                                    onChange={(e)=>setFile(e.target.files[0])} 
-                                    type="file"  
-                                    id="formFile" 
-                                    
-                                    // onChange= {PostNotes, (e)=>{ e.preventDefault(); setfile(e.target.files[0])}}
-                                    />
-                                
-                                        <button 
-                                        type="button" 
-                                        className=" ml-5 btn btn-primary mr-5 mt-2 "  
-                                        onClick={(e)=> PostNotes(e)}>
-                                            Submit
-                                        </button>
-                                </div>
-                    </div>
                     
-                    </div>
+                    const check = Object.keys(classData).length;
+                    console.log(check)
+            
                     
+                    
+                    if(!check){
+                        console.log(check)
+                        // message(" No new assignment for now!!")
+
+                        return(
+                            <>
+                            
+                            <div className=" h-25 w-100 text-info h3 mt-5  ml-10"><center>No assignment for now!</center></div>
+                            </>
+                        )
+                       
+                    }
+                    
+    return (
+        <> 
+        {/* <div className="w-100 h-100 mt-1 overflow-scroll"> */}
+            <div className="card mr-auto ml-auto mt-2   overflowForCSS">
+                    {
+                        
+                        classData.map(item=>{
+                            
+                            // const check = 
+                            const currentTime = new Date();
+                            const expireTime = new Date(item.due);
+                            let time 
+                            const minutes = Math.trunc((expireTime - currentTime) / (1000 * 60));
+                            const attach = minutes>60?"hr":"min"
+                            if(minutes>60){
+                                const t  = minutes/60
+                                time = t.toFixed(1)
+                                const attach = "hr"
+                            }
+                            else{
+                                time = minutes.toFixed(1)
+                                const attach = "min"
+                            }
+                            console.log(minutes);
+
+                            console.log(check)
+                            const url = item.assign
+                            const name = url.substring(url.lastIndexOf('/')+1);
+                            
+                        return(
+                                    <div class="  h-100 w-100">
+                                        <div class=" mb-1 d-flex justify-content-between card-header">
+                                            Ongoing Assignment
+                                            
+                                                <div className="PdfName2">
+                                                    Due: { time}{attach}
+                                                </div>
+                                                </div>
+                                            <div className="card-body overflow-auto">
+                                                <Link className="nav-link border rounded" to={url} target="_blank" rel="noopener noreferrer">
+                                                    <div className="row bd-highlight mb-0">
+                                                    <img className=" ml-4  col-0 "src={pdf} alt="pdf" width="40" height="50"/>
+                                                    
+                                                    <h5 className="card-title ml-5 col-sm text2 text-dark">Special title treatment</h5>
+                                                    </div>
+                                                    <p className="PdfName mb-1  text-dark">Filw name here<br/></p>
+                                                </Link>
+
+                                                    <div className="row ">
+                                                        <input className=" mt-2 ml-4 col-sm"
+                                                        onChange={(e)=>setFile(e.target.files[0])} 
+                                                        type="file"  
+                                                        id="formFile" 
+                                                        
+                                                        // onChange= {PostNotes, (e)=>{ e.preventDefault(); setfile(e.target.files[0])}}
+                                                        />
+                                                    
+                                                            <button 
+                                                            type="button" 
+                                                            className=" ml-5 btn btn-primary mr-5 mt-2 "  
+                                                            onClick={(e)=> PostNotes(e)}>
+                                                                Submit
+                                                            </button>
+                                                            
+                                                    </div>
+                                        </div>
+                                        
+                                        </div>
+                            )
+                        })
+                    }
+            </div> 
+            {/* </div>         */}
+
         </>
     )
 }

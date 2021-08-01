@@ -134,12 +134,21 @@ button{
 }
 .PdfName{
   font-size: 10px;
-  
 }
+.PdfName2{
+  font-size: 15px; 
+}
+
 .test1{
   background: red;
 }
 .text2{
   
   text-align: center;
+}
+
+.overflowForCSS{
+  overflow-y: scroll;
+  height: 45%;
+  width:75%;
 }
