@@ -17,7 +17,12 @@ const Ongoing = () => {
     const classObj = (localStorage.getItem("classObj"))
     const class_id = (localStorage.getItem("classID"))
     const _id = (localStorage.getItem("ID"))
+    const assign_id = (localStorage.getItem("assign_id"))
+
+    
     console.log(class_id)
+    console.log(assign_id)
+
 
     // get ongoing assignments 
     useEffect(() =>{
@@ -51,10 +56,11 @@ const Ongoing = () => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                //assign_id,
+                assign_id,
                 time, 
                 url,
                 _id
+                
             })
         })
         .then(res=>res.json())
@@ -67,6 +73,7 @@ const Ongoing = () => {
             else{
                 
                 window.alert("Assignment uploaded successfully")
+                localStorage.removeItem("assign_id")
                 window.location.reload();
             }
 
@@ -75,11 +82,10 @@ const Ongoing = () => {
     }}, [url])
 
 
-    const PostNotes =(e)=>{
+    const PostNotes =(item)=>{
 
-        if(new Date() > classData[0].due)
-        {
-        e.preventDefault()
+        
+        const assign_id = item._id
             setTime(new Date())
         // let filepath
         const data = new FormData()
@@ -101,10 +107,10 @@ const Ongoing = () => {
         .catch(err=>{
             console.log(err)
         })
-    }
-    else{
-        window.alert("The time for this assignment is exceeded, submissions no longer be accepted. Contact your faculty to find alternative way to submit")
-    }
+    // }
+    // else{
+    //     window.alert("The time for this assignment is exceeded, submissions no longer be accepted. Contact your faculty to find alternative way to submit")
+    // }
     }
 
 
@@ -148,7 +154,9 @@ const Ongoing = () => {
                     {
                         
                         classData.map(item=>{
-                            
+                            console.log(item)
+                            const assign_id = item._id
+                            localStorage.setItem("assign_id", item._id)
                             // const check = 
                             const currentTime = new Date();
                             const expireTime = new Date(item.due);
@@ -211,7 +219,7 @@ const Ongoing = () => {
                                                             <button 
                                                             type="button" 
                                                             className=" ml-5 btn btn-primary mr-5 mt-2 "  
-                                                            onClick={(e)=> PostNotes(e)}>
+                                                            onClick={(item)=> PostNotes(item)}>
                                                                 Submit
                                                             </button>
                                                             

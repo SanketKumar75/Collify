@@ -37,9 +37,9 @@ const sSchema  = new mongoose.Schema({
     ],
     submits:[
         {
-            // assign_id:{//or assignment _id
-            //     type: String
-            // },
+            assign_id:{//or assignment _id
+                type: String
+            },
             submit:{ //submission url
                 type: String,
                 

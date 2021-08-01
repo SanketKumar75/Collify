@@ -199,20 +199,21 @@ router.post('/getassigns', async (req, res)=> {
 
 //upload submissions
 router.post('/student/uploadsubmit', async (req, res)=>{
-    const {time, url, _id, } = req.body//assign_id
-    console.log(time, url, _id)
-    if( !url || !_id || !time){
-        console.log(time, url, _id)
-        return res.status(422).json({error: " file not added "})
+    const {assign_id, time, url, _id, } = req.body//assign_id
+    console.log( assign_id, time, url, _id)
+    if(!assign_id || !url || !_id || !time){
+        console.log(assign_id, time, url, _id)
+        return res.status(422).json({error: " file not added or assignment not found"})
         
     }
     const postTo = await Student.findOne({_id: _id})
-    postTo.submits = postTo.submits.concat({ submit: url,  tle: time})//assign_id: _id,
+    postTo.submits = postTo.submits.concat({assign_id: assign_id, submit: url,  tle: time})//assign_id: _id,
 
     await postTo.save()
 
     console.log("Successfully uploaded")
     res.json(postTo.submits)
+    localStorage.removeItem("assign_id")
     })
 
     //fetch assignment
