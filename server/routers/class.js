@@ -33,8 +33,6 @@ router.get('/allclass', authenticate , (req, res) =>{
     
     //const localName = localStorage.getItem("name");
     //console.log(localName)
-    
-
     const clas = Clas.find()
     .then(classes=>{
         res.json({classes})
@@ -213,7 +211,7 @@ router.post('/student/uploadsubmit', async (req, res)=>{
 
     console.log("Successfully uploaded")
     res.json(postTo.submits)
-    localStorage.removeItem("assign_id")
+    const a = await localStorage.removeItem("assign_id")
     })
 
     //fetch assignment
@@ -231,6 +229,33 @@ router.post('/getongoingassign', async (req, res)=> {
     res.json(d)
     
 })
+
+
+// fetching assignments submissions from students DB to
+//through classDB(_id) to faculties component 
+router.post('/submissions', async (req, res)=>{
+    const {_id} = req.body;// id here is  assignment_id i.e.assign_id
+    // console.log(_id)
+    const allSubmissions = await Student.find()
+    let submissions =[]
+    let i=0
+    for (i=0; i<allSubmissions.length;i++)
+        {
+            submissions = submissions.concat(allSubmissions[i].submits)
+        }
+    // console.log(submissions)
+
+    const resData = submissions.filter(x=> 
+        x.assign_id == _id)
+
+    // console.log(resData)
+    res.json(resData)
+})
+
+
+
+
+
 // for videos or other stuff 
 
 
