@@ -153,16 +153,24 @@ const Ongoing = () => {
                             const currentTime = new Date();
                             const expireTime = new Date(item.due);
                             let time 
-                            const minutes = Math.trunc((expireTime - currentTime) / (1000 * 60));
-                            const attach = minutes>60?"hr":"min"
-                            if(minutes>60){
+                            const minutes = (expireTime - currentTime) / (1000 * 60);
+                            const at = minutes>60?" hr":" min";
+                            const day = " days"
+                            const attach = minutes>1440?day:at
+                             if(minutes>1440){
+                                const t = minutes/1440
+                                time = t.toFixed(0)
+                                const attach = "days"
+                            }
+                            else if(minutes>60){
                                 const t  = minutes/60
-                                time = t.toFixed(1)
-                                const attach = "hr"
+                                time = t.toFixed(0)
+                                 const attach = "hr"
+                                 
                             }
                             else{
-                                time = minutes.toFixed(1)
-                                const attach = "min"
+                                time = minutes.toFixed(0)
+                                 const attach = "min"
                             }
                             console.log(minutes);
 
@@ -184,12 +192,14 @@ const Ongoing = () => {
                                                     <div className="row bd-highlight mb-0">
                                                     <img className=" ml-4  col-0 "src={pdf} alt="pdf" width="40" height="50"/>
                                                     
-                                                    <h5 className="card-title ml-5 col-sm text2 text-dark">Special title treatment</h5>
+                                                    <h5 className="card-title ml-5 col-sm text2 text-dark">{item.topic}</h5>
                                                     </div>
-                                                    <p className="PdfName mb-1  text-dark">Filw name here<br/></p>
+                                                    <p className="PdfName mb-1  text-dark">{name}<br/></p>
                                                 </Link>
 
+
                                                     <div className="row ">
+                                                       <h6 className=" ml-4 mt-3"> Submission: </h6>
                                                         <input className=" mt-2 ml-4 col-sm"
                                                         onChange={(e)=>setFile(e.target.files[0])} 
                                                         type="file"  
