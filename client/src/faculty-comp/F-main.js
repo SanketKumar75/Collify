@@ -10,7 +10,7 @@ import FacClass from './FacClass';
 import Notes from './Notes';
 import Assignment from './Assignment';
 import Discussion from './Disscussion';
-
+import Submissions from './assign/submissions';
 
 const FacultyHome = () => {
 
@@ -43,6 +43,9 @@ const FacultyHome = () => {
         </Route>
         <Route path="/faculty/disscussion">
         <Discussion />
+        </Route>
+        <Route  exact path="/faculty/submission">
+        <Submissions />
         </Route>
         
 

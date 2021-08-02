@@ -55,6 +55,13 @@ const sSchema  = new mongoose.Schema({
             },
             tle:{//true if time limit exceded for now passing date itself
                 type: Date
+            },
+            name:{
+                type: String
+            },
+            email: {
+                type: String,
+                required: false
             }
         }
     ]

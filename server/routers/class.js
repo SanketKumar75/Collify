@@ -198,20 +198,26 @@ router.post('/getassigns', async (req, res)=> {
 //upload submissions
 router.post('/student/uploadsubmit', async (req, res)=>{
     const {assign_id, time, url, _id, } = req.body//assign_id
-    console.log( assign_id, time, url, _id)
+    
     if(!assign_id || !url || !_id || !time){
         console.log(assign_id, time, url, _id)
         return res.status(422).json({error: " file not added or assignment not found"})
         
     }
     const postTo = await Student.findOne({_id: _id})
-    postTo.submits = postTo.submits.concat({assign_id: assign_id, submit: url,  tle: time})//assign_id: _id,
+    const name = postTo.name
+    const email = postTo.email
+
+    console.log(name)
+    console.log(email)
+
+    postTo.submits = postTo.submits.concat({assign_id: assign_id, submit: url,  tle: time, name: name, email: email})//assign_id: _id,
 
     await postTo.save()
 
     console.log("Successfully uploaded")
     res.json(postTo.submits)
-    const a = await localStorage.removeItem("assign_id")
+    // const a = await localStorage.removeItem("assign_id")
     })
 
     //fetch assignment
@@ -230,6 +236,18 @@ router.post('/getongoingassign', async (req, res)=> {
     
 })
 
+//fetch all assignments
+router.post('/getassignlist', async (req, res)=>{
+    const {_id} = req.body;
+    // console.log(_id)
+
+    const classList = await Clas.findOne({_id : _id});
+    // console.log(classList)
+    const assignList = classList.assigns
+
+    // console.log(assignList)
+    res.json(assignList)
+})
 
 // fetching assignments submissions from students DB to
 //through classDB(_id) to faculties component 
@@ -241,12 +259,21 @@ router.post('/submissions', async (req, res)=>{
     let i=0
     for (i=0; i<allSubmissions.length;i++)
         {
+            // allSubmissions.push()
             submissions = submissions.concat(allSubmissions[i].submits)
+            // submissions.push({"name": allSubmissions[i].name})
         }
-    // console.log(submissions)
+    // console.log(allSubmissions)
 
+    const sub = submissions.filter(x=> 
+        x.assign_id == _id
+        
+        )
     const resData = submissions.filter(x=> 
-        x.assign_id == _id)
+        x.assign_id == _id
+        
+        )
+        
 
     // console.log(resData)
     res.json(resData)

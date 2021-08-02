@@ -14,6 +14,8 @@ const Ongoing = () => {
     const [file, setFile] = useState("")
     const [url, setUrl] = useState("")
 
+    // localStorage.removeItem("assign_id")
+
     const classObj = (localStorage.getItem("classObj"))
     const class_id = (localStorage.getItem("classID"))
     const _id = (localStorage.getItem("ID"))
@@ -82,10 +84,10 @@ const Ongoing = () => {
     }}, [url])
 
 
-    const PostNotes =(item)=>{
+    const PostNotes =(e)=>{
 
         
-        const assign_id = item._id
+        
             setTime(new Date())
         // let filepath
         const data = new FormData()
@@ -130,12 +132,12 @@ const Ongoing = () => {
 
                     
                     const check = Object.keys(classData).length;
-                    console.log(check)
+                    // console.log(check)
             
                     
                     
                     if(!check){
-                        console.log(check)
+                        // console.log(check)
                         // message(" No new assignment for now!!")
 
                         return(
@@ -156,7 +158,7 @@ const Ongoing = () => {
                         classData.map(item=>{
                             console.log(item)
                             const assign_id = item._id
-                            localStorage.setItem("assign_id", item._id)
+                            
                             // const check = 
                             const currentTime = new Date();
                             const expireTime = new Date(item.due);
@@ -219,7 +221,7 @@ const Ongoing = () => {
                                                             <button 
                                                             type="button" 
                                                             className=" ml-5 btn btn-primary mr-5 mt-2 "  
-                                                            onClick={(item)=> PostNotes(item)}>
+                                                            onClick={(e)=> {PostNotes(e); localStorage.setItem("assign_id", item._id)}}>
                                                                 Submit
                                                             </button>
                                                             
@@ -237,3 +239,4 @@ const Ongoing = () => {
     )
 }
 export default Ongoing
+
