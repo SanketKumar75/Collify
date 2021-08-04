@@ -11,6 +11,7 @@ import Notes from './Notes';
 import Assignment from './Assignment';
 import Discussion from './Disscussion';
 import Submissions from './assign/submissions';
+import Video from '../Comp/Jisti'
 
 const FacultyHome = () => {
 
@@ -47,6 +48,10 @@ const FacultyHome = () => {
         <Route  exact path="/faculty/submission">
         <Submissions />
         </Route>
+        <Route  exact path="/faculty/online">
+        <Video />
+        </Route>
+        
         
 
 

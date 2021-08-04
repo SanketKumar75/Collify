@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Route} from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
-
+import Video from '../Comp/Jisti'
 
 
 const FacClass = (props) => {
@@ -57,7 +57,7 @@ const FacClass = (props) => {
                 <div className="mt-25 h-75 w-100 bg-secondary">
 
                     <h3>Recorded classes here</h3>
-
+                    
                 </div>
 
             </div>
