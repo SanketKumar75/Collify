@@ -158,3 +158,41 @@ button{
 .width-CSS{
   width: 100%
 }
+
+.sendbox{
+  /* position : absolute;
+  bottom   : 0; */
+   
+  height:92%
+}
+.messagebox{
+  max-width: 100%;
+  border: 1px;
+  
+  border-radius: 0px 7px 7px 7px ;
+  margin-bottom: 10px;
+}
+.sendermessagebox{
+  width: 100%;
+  border: 1px;
+  margin-right: 10px;
+  float: right;
+  border-radius: 10px 0px 10px 10px ;
+  
+  margin-bottom: 10px;
+  
+}
+.sender{
+  font-size: 10px;
+  bottom: 0;
+  float: right;
+}
+.NOtsender{
+  font-size: 10px;
+  bottom: 0;
+}
+
+.textareaCSS{
+  resize:none;
+  max-height: 40px;
+}

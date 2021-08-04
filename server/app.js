@@ -3,10 +3,9 @@ const express = require('express');
 const dotenv = require("dotenv");
 const fileUpload = require('express-fileupload');
 
-
 const app = express();
-
-
+const server = require('http').createServer(app)
+const io  = require('socket.io')(server)
 dotenv.config({path:'./config.env'});
 const PORT = process.env.PORT || 4000;
 
@@ -17,6 +16,22 @@ app.use(express.json());
 app.use(require('./routers/auth'));
 
 app.use(require('./routers/class'));
+
+
+
+
+io.removeAllListeners()
+
+ 
+//Socket.io for discussion
+io.on('connection', socket =>{
+    // console.log('Hello from socket.io')
+    socket.on('message', (obj)=>{
+        console.log(obj);
+
+        socket.broadcast.emit('message', obj)
+    })
+})
 
 
 
@@ -74,9 +89,14 @@ app.post('/student/upload/submission', (req, res) =>{
 
 
 
+
+
+
+
+
 console.log("Yes it works");
 
 
-app.listen(PORT, ()=>{
+server.listen(PORT, ()=>{
     console.log(`Serving at ${PORT}`);
 })

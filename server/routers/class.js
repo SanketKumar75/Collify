@@ -220,7 +220,7 @@ router.post('/student/uploadsubmit', async (req, res)=>{
     // const a = await localStorage.removeItem("assign_id")
     })
 
-    //fetch assignment
+    //fetch ongoing assignment
 router.post('/getongoingassign', async (req, res)=> {
     const {class_id} = req.body;
     console.log(class_id)

@@ -52,6 +52,16 @@ const classSchema  = new mongoose.Schema({
             
         }
     ],
+    discuss:[
+        {
+            name:{
+                type: String
+            },
+            message:{
+                type: String
+            }
+        }
+    ],
     record: [
         {
             video:{
