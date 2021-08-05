@@ -21,9 +21,7 @@ const FacultyHome = () => {
     return (
         <>
         
-        <div>
-            <h2>Faculty'sPage</h2>
-        </div>
+{/* Some thing to fill */}
         <Route  exact path="/faculty">
         <Subject />
         </Route>

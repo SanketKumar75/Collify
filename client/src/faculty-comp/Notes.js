@@ -109,6 +109,10 @@ const Notes = () => {
         
         <>
         <div>
+        
+            <div className="mt-1 mb-0 d-flex justify-content-between">
+            <h5 className="mt-3 mb-0 ml-5">Subject: {classData.subject}</h5>  <h5 className="mt-3 mb-0 mr-5">Faculty: {classData.faculty}</h5>
+                </div>
            
             <div className="Options Content">
                         
@@ -120,7 +124,7 @@ const Notes = () => {
      
                      </div>
         </div>
-        <center> <h2><h6>Subject</h6>{classData.subject}</h2></center>
+ 
             <div className="Content">
                 <div className="w-50 h-100 bg-light ">
 

@@ -15,7 +15,7 @@ class Video extends Component {
         this.state = {
             room: (localStorage.getItem("classID")),
             user: {
-                name:(localStorage.getItem("Name"))
+                name:(localStorage.getItem("name"))
             },
             isAudioMuted: false,
             isVideoMuted: false
@@ -27,8 +27,15 @@ class Video extends Component {
         const options = {
             roomName: this.state.room,
             width: '100%',
-            height: 700,
-            configOverwrite: { prejoinPageEnabled: false },
+            height: 500,
+            
+            interfaceConfigOverwrite: {
+                DEFAULT_LOGO_URL: 'images/watermark.svg', 
+                
+                DEFAULT_WELCOME_PAGE_LOGO_URL: 'images/watermark.svg', 
+                SHOW_JITSI_WATERMARK: false },
+
+            configOverwrite: { prejoinPageEnabled: true },
             interfaceConfigOverwrite: {
                 // overwrite interface properties
             },
@@ -38,7 +45,10 @@ class Video extends Component {
             }
         }
         this.api = new window.JitsiMeetExternalAPI(this.domain, options);
-
+        this.api.executeCommand('startRecording', {
+            mode: "D:/Collify/client/public/uploads" //recording mode, either `file` or `stream`.
+           
+        });
         this.api.addEventListeners({
             readyToClose: this.handleClose,
             participantLeft: this.handleParticipantLeft,
@@ -49,30 +59,31 @@ class Video extends Component {
             videoMuteStatusChanged: this.handleVideoStatus
         });
     }
+    
 
     handleClose = () => {
         console.log("handleClose");
     }
 
     handleParticipantLeft = async (participant) => {
-        console.log("handleParticipantLeft", participant); // { id: "2baa184e" }
+        console.log("handleParticipantLeft", participant);
         const data = await this.getParticipants();
     }
 
     handleParticipantJoined = async (participant) => {
-        console.log("handleParticipantJoined", participant); // { id: "2baa184e", displayName: "Shanu Verma", formattedDisplayName: "Shanu Verma" }
+        console.log("handleParticipantJoined", participant); 
         const data = await this.getParticipants();
     }
 
     handleVideoConferenceJoined = async (participant) => {
-        console.log("handleVideoConferenceJoined", participant); // { roomName: "bwb-bfqi-vmh", id: "8c35a951", displayName: "Akash Verma", formattedDisplayName: "Akash Verma (me)"}
+        console.log("handleVideoConferenceJoined", participant); 
         const data = await this.getParticipants();
     }
 
     handleVideoConferenceLeft = () => {
         console.log("handleVideoConferenceLeft");
 
-         history.push('./class');
+        //  history.push('./class');
     }
 
     handleMuteStatus = (audio) => {
@@ -91,7 +102,7 @@ class Video extends Component {
         });
     }
     onMeetingEnd=() => console.log('Meeting has ended')
-
+    
     // custom events
     executeCommand(command) {
         this.api.executeCommand(command);;
@@ -111,6 +122,7 @@ class Video extends Component {
     componentDidMount() {
         if (window.JitsiMeetExternalAPI) {
             this.startMeet();
+            
         } else {
             alert('JitsiMeetExternalAPI not loaded');
         }

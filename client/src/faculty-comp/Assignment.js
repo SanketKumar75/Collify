@@ -109,7 +109,10 @@ const Assignment = () => {
     return (
         <>
         <div>
-        
+
+        <div className="mt-1 mb-0 d-flex justify-content-between">
+            <h5 className="mt-3 mb-0 ml-5">Subject: {classData.subject}</h5>  <h5 className="mt-3 mb-0 mr-5">Faculty: {classData.faculty}</h5>
+                </div>
             <div className="Options Content">
                    <NavLink className=" nav-link col text-secondry " to="/faculty/class"><div className="Option text-light"><h4>Class</h4></div></NavLink>
                    <NavLink className=" nav-link col text-secondry " to="/faculty/notes"><div className="Option text-light"><h4>Notes</h4></div></NavLink>
@@ -117,7 +120,7 @@ const Assignment = () => {
                    <NavLink className=" nav-link col text-secondry " to="/faculty/disscussion"><div className="Option text-light"><h4>Discussion</h4></div></NavLink>
                 </div>
         </div>
-        <center> <h2><h6>Subject</h6>{classData.subject}</h2></center>
+      
         <div className="Content">
             
                 <div className="w-50 h-100 ht border border-top-0 border-start-0 border-bottom-0 border-end-1 ">

@@ -110,7 +110,7 @@
   flex-direction: row;
   flex: 1;
   height: 100px;
-  margin-top: 5%;
+  margin-top: 2px;
 }
 .Option{
   align-items: center;
@@ -196,3 +196,13 @@ button{
   resize:none;
   max-height: 40px;
 }
+
+
+
+
+
+
+
+
+
+
