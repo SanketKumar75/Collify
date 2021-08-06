@@ -1,3 +1,7 @@
+*{
+  font-family: 'Comfortaa', cursive;
+  /* font-family: 'Style Script', cursive; */
+}
 
 .App {
   text-align: center;
@@ -30,11 +34,21 @@
 /* For Sign up and log */
 .form{
   display: flex;
-  flex-direction: column;
+ 
 }
 
 
-
+.cursive{
+  font-family: 'Style Script', cursive;
+  justify-content: center;
+  flex-direction: column;
+}
+.comforta{
+  font-family: 'Comfortaa', cursive;
+}
+.smallFont{
+  font-size: 12px;
+}
 /* Sujects viewing on*/
 .Subjects{
   margin-left: 10%;
@@ -199,10 +213,26 @@ button{
 
 
 
+.Homepage-Container{
+  border: 1px;
+  border-radius: 5px;
+  margin-top: 2%;
+  background: rgb(5, 213, 5);
+  justify-content: center;
+  margin-bottom: 5%;
+  box-shadow: rgba(0, 0, 0, 0.50) 0px 20px 50px;
+
+
+}
 
 
 
 
 
 
+/* .Background{
+  background: #61dafb;
+  height: 100%;
+  width: 100%;
+} */
 

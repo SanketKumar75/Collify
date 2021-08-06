@@ -38,7 +38,7 @@ const StLogin = () => {
                 localStorage.setItem("email", data.studentLogin.email)
                 localStorage.setItem("batch", data.studentLogin.batch)
                 localStorage.setItem("ID", data.studentLogin._id)
-                localStorage.setItem("Name", data.studentLogin.name)
+                localStorage.setItem("name", data.studentLogin.name)
                 localStorage.setItem("user", JSON.stringify(data))
             window.alert(`Yup Login succe3ssfull  ${res.status}`);
             console.log("Yup Login succe3ssfull ");
