@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import {Navlink, useHistory} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
+import {Navlink, useHistory} from 'react-router-dom';
+import sideimg from '../assets/20944201.jpg'
 
 const StLogin = () => {
-
+    document.body.style = 'background: #1DA1F2;';
     const history = useHistory();
 
     const [email, setEmail] = useState('');
@@ -30,7 +32,7 @@ const StLogin = () => {
                 window.alert(`Invalid Registeration ${res.status}`);
                 console.log("Invalid reghisteration");
             }
-            else if(res.status === 422 )
+            else if(res.status === 422 || res.status === 422 )
             window.alert(`Invalid Registeration ${res.status}`);
             else if(res.status === 200){
 
@@ -49,19 +51,39 @@ const StLogin = () => {
 
     return (
         <>
-        <div className= "form">
-                <form method="POST">
-                    <input type="text" name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Email Id" required />
-                    <input type="Password" name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Password" required />
-                    <button  onClick={postData}>Login</button>
-                </form>
+      
+        <div className=" form d-flex  justify-content-center ">
+                <div className=" Homepage-Container p-2 w-50 row mt-5 ">
+                
+                        <div className=" mr-5 ml-5 justify-content-center col p-2 ">
+                            <center><h2 className="text-light">Student Login</h2>
+                            <NavLink to="/student/signup"> <p className="text-light smallFont mt-2">Dont have an account?</p></NavLink> </center>
+                                <form className="col  " method="POST">
+                                <input className="row text-light inputcss" type="text" name="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="Email Id" required />
+                                <input className="row  text-light inputcss"  type="Password" name="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                    placeholder="Password" required />
+                                    
+                                <button className="Logbutton text-light" onClick={postData}>Login</button>
+                                </form>
+                                
+                        </div>      
+            
+                        {/* <div className="ml-3 justify-content-right col p-2"> */}
+                            
+                        <img className="mt-3 mr-2 border rounded justify-content-right col p-0  imagecss" src={sideimg} alt="login image"  width="auto" height="300" />
+                            
+                            
+                        
+                        {/* </div> */}
             </div>
+            </div>
+               
+           
         </>
     )
 
