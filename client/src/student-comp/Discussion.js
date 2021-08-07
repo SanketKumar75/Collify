@@ -8,6 +8,8 @@ import io from 'socket.io-client';
 const socket = io()
 
 const Discussion = () => {
+    document.body.style = 'background: rgb(199, 179, 150);';
+
     const history = useHistory();
 
     const [classData, setclassData] = useState({})

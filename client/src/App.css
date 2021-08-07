@@ -31,6 +31,9 @@
   }
 }
 
+.break-line{
+  white-space: pre-wrap;
+}
 .material-icons {
   font-size: 30px;
    color: white;
@@ -293,7 +296,9 @@ select{
 }
 
 
-
+.mynote-cards{
+  overflow-x: hidden;
+}
 
 
 

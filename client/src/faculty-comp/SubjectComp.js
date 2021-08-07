@@ -12,6 +12,8 @@ import Discussion from './Disscussion';
 
 
 const Subject = () => {
+    document.body.style = 'background: rgb(199, 179, 150);';
+
 
     const localName = localStorage.getItem("name");
     localStorage.removeItem("classID")

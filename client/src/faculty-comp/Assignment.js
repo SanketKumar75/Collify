@@ -8,6 +8,7 @@ import 'react-calendar/dist/Calendar.css';
 import PrevAssign from './assign/prevassign';
 
 const Assignment = () => {
+    document.body.style = 'background: rgb(199, 179, 150);';
 
 
     const [classData, setclassData] = useState({})

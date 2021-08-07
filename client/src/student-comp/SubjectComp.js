@@ -4,6 +4,8 @@ import {NavLink} from 'react-router-dom';
 
 
 const Subject = () => {
+    document.body.style = 'background: rgb(199, 179, 150);';
+
 
     const localBatch = localStorage.getItem("batch")
     localStorage.removeItem("classID")

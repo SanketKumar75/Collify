@@ -9,6 +9,12 @@ import PrevNotes from './PrevNotes';
 
 
 const Notes = () => {
+    document.body.style = 'background: rgb(199, 179, 150);';
+
+
+
+
+    
     //There three are for Uploading notes
     const [title, settitle] = useState("")
     const [file, setfile] = useState("")

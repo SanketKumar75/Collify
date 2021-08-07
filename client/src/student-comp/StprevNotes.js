@@ -71,7 +71,7 @@ const StprevNotes = () => {
         <>
         <br/>
                 <h5  className="ml-5"> Previous Notes by Prof. {classData.faculty}</h5>
-                <div class="border rounded  border-1 border-info mr-auto ml-auto mt-5 h-75 w-75 bg-light overflow-auto">
+                <div class="border rounded  border-1 border-info mr-auto ml-auto mt-5 h-75 mh-50 w-75 bg-light overflow-auto">
                     {
                         noteList.map(item=>{
 

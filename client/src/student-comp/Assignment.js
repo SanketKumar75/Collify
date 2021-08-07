@@ -5,6 +5,7 @@ import PrevAssign from './assignments/PrevAssigns';
 import Ongoing from './assignments/Ongoing';
 
 const Assignment = () => {
+    document.body.style = 'background: rgb(199, 179, 150);';
       
     const [classData, setclassData] = useState({})
 

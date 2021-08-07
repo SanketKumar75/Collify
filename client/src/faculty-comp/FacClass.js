@@ -6,6 +6,8 @@ import Video from '../Comp/Jisti'
 
 
 const FacClass = (props) => {
+    document.body.style = 'background: rgb(199, 179, 150);';
+
 
     const [classData, setclassData] = useState({})
 

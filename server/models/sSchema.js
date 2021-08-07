@@ -64,6 +64,19 @@ const sSchema  = new mongoose.Schema({
                 required: false
             }
         }
+    ],
+    mynotes:
+    [
+        {
+            header:{
+                type: String,
+               
+            },
+            mynote:{
+                type: String,
+                
+            }
+        }
     ]
 
 })

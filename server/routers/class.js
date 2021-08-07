@@ -157,11 +157,40 @@ router.post('/getnotes', async (req, res)=> {
     res.json(notesList)
 })
 
+////Mynotes
 
+//upload myNotes
+router.post('/upload-my-notes', async (req, res) =>{
+    const { student_id, header, mynote} = req.body;
+    const _id = student_id;
+    // console.log(_id, header, mynote)
+    if(!_id||!header || !mynote)
+        return res.status(422).json({error: "something is missing"})
+    const upload_my_note = await Student.findOne({_id: _id})
 
+    upload_my_note.mynotes = upload_my_note.mynotes.concat({_id: _id, header: header, mynote: mynote})
 
+    await upload_my_note.save()
 
+    console.log("uploaded to my notes!!")
+    res.json(upload_my_note.mynotes)
+})
 
+//fetch my notes
+router.post('/get-my-notes', async(req, res) =>{
+    const {student_id} = req.body;
+    const _id = student_id
+    
+    if(!_id)
+        return res.status(422).json({error: "Id no good"})
+
+    const studentlist = await Student.findOne({_id: _id})
+    const mynotesList =  studentlist.mynotes
+
+    res.json(mynotesList)
+
+ 
+})
 
 
 
