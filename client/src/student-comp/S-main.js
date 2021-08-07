@@ -16,9 +16,7 @@ const StudentHome = () => {
     return (
        <>
        
-        <div>
-         <h2>Student'sPage</h2>
-        </div>
+        
         <Route  exact path="/student">
         <Subject />
         </Route>

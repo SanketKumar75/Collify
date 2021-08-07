@@ -39,6 +39,17 @@ const Assignment = () => {
     return (
         <>
         <div>
+
+                        <div className="card-header bg-secondary border rounded d-flex justify-content-between">
+                        
+                        <div className="bg-dark rounded pl-2 pr-2 pt-2 mt-0">
+                                <NavLink to="/student"><mat-icon class="material-icons large">first_page</mat-icon></NavLink>
+                        </div >
+                        <h5 className="mt-3 mb-0 mr-5">Subject: {classData.subject}</h5>
+                        <h5 className="mt-3 mb-0 mr-5">Faculty: {classData.faculty}</h5>
+                        <button className="bg-dark border rounded h-5  text-light" > <NavLink className="nav-link text-light" to="/student/login" >logout</NavLink></button>
+
+                    </div> 
         
             <div className="Options  Content">
                    <NavLink className=" nav-link col text-secondry " to="/student/class"><div className="Option text-light"><h4>Class</h4></div></NavLink>
@@ -47,8 +58,8 @@ const Assignment = () => {
                    <NavLink className=" nav-link col text-secondry " to="/student/disscussion"><div className="Option text-light"><h4>Discussion</h4></div></NavLink>
                 </div>
         </div>
-        <center> <h2><h6>Subject</h6>{classData.subject}</h2></center>
-        <div className=" ml-10 Content row ">
+        
+        <div className=" Content  ">
                 
                 <Ongoing />    
                 <PrevAssign />

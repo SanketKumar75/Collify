@@ -8,6 +8,7 @@ const StLogin = () => {
     document.body.style = 'background: #1DA1F2;';
     const history = useHistory();
 
+    localStorage.clear()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -73,13 +74,9 @@ const StLogin = () => {
                                 
                         </div>      
             
-                        {/* <div className="ml-3 justify-content-right col p-2"> */}
                             
                         <img className="mt-3 mr-2 border rounded justify-content-right col p-0  imagecss" src={sideimg} alt="login image"  width="auto" height="300" />
-                            
-                            
-                        
-                        {/* </div> */}
+
             </div>
             </div>
                

@@ -9,6 +9,7 @@ import PrevAssign from './assign/prevassign';
 
 const Assignment = () => {
 
+
     const [classData, setclassData] = useState({})
 
     //for upload
@@ -110,9 +111,16 @@ const Assignment = () => {
         <>
         <div>
 
-        <div className="mt-1 mb-0 d-flex justify-content-between">
-            <h5 className="mt-3 mb-0 ml-5">Subject: {classData.subject}</h5>  <h5 className="mt-3 mb-0 mr-5">Faculty: {classData.faculty}</h5>
-                </div>
+                    <div className="card-header bg-secondary border rounded d-flex justify-content-between">
+                        
+                        <div className="bg-dark rounded pl-2 pr-2 pt-2 mt-0">
+                                <NavLink to="/faculty"><mat-icon class="material-icons large">first_page</mat-icon></NavLink>
+                        </div >
+                        <h5 className="mt-3 mb-0 mr-5">Subject: {classData.subject}</h5>
+                        <h5 className="mt-3 mb-0 mr-5">Faculty: {classData.faculty}</h5>
+                        <button className="bg-dark border rounded h-5  text-light" > <NavLink className="nav-link text-light" to="/faculty/login" >logout</NavLink></button>
+
+                    </div>  
             <div className="Options Content">
                    <NavLink className=" nav-link col text-secondry " to="/faculty/class"><div className="Option text-light"><h4>Class</h4></div></NavLink>
                    <NavLink className=" nav-link col text-secondry " to="/faculty/notes"><div className="Option text-light"><h4>Notes</h4></div></NavLink>

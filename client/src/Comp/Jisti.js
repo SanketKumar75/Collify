@@ -27,7 +27,7 @@ class Video extends Component {
         const options = {
             roomName: this.state.room,
             width: '100%',
-            height: 500,
+            height: 700,
             
             interfaceConfigOverwrite: {
                 DEFAULT_LOGO_URL: 'images/watermark.svg', 
@@ -82,6 +82,8 @@ class Video extends Component {
 
     handleVideoConferenceLeft = () => {
         console.log("handleVideoConferenceLeft");
+        window.alert("Left Live-class")
+        window.location.reload();
 
         //  history.push('./class');
     }
@@ -101,13 +103,18 @@ class Video extends Component {
             }, 500)
         });
     }
-    onMeetingEnd=() => console.log('Meeting has ended')
-    
+    onMeetingEnd=() =>{ console.log('Meeting has ended')
+    window.alert("Live class has ended")
+    window.location.reload();
+
+    }
     // custom events
     executeCommand(command) {
         this.api.executeCommand(command);;
         if(command == 'hangup') {
-            return this.props.history.push('/thank-you');
+            window.location.reload();
+            return this.props.history.push('/faculty');
+            
         }
 
         if(command == 'toggleAudio') {

@@ -15,7 +15,7 @@ const Home = () => {
 
         <div className="Background">
                <center> 
-                   <h1 className="cursive mt-5 text-light ">Welcome to Collify</h1>
+                   <h1 className="cursive mt-5 text-light ">Welcome to Collify </h1>
                    
                    <div className="comforta mt-3 text-warning pl-3">Collify is an E-Learning platform for students and faculties </div>
                    <div className="comforta text-warning p-2">With Collify you can- </div>

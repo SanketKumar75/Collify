@@ -43,6 +43,17 @@ const Notes = () => {
     return (
         <>
         <div>
+
+                    <div className="card-header bg-secondary border rounded d-flex justify-content-between">
+                        
+                        <div className="bg-dark rounded pl-2 pr-2 pt-2 mt-0">
+                                <NavLink to="/student"><mat-icon class="material-icons large">first_page</mat-icon></NavLink>
+                        </div >
+                        <h5 className="mt-3 mb-0 mr-5">Subject: {classData.subject}</h5>
+                        <h5 className="mt-3 mb-0 mr-5">Faculty: {classData.faculty}</h5>
+                        <button className="bg-dark border rounded h-5  text-light" > <NavLink className="nav-link text-light" to="/student/login" >logout</NavLink></button>
+
+                    </div>  
             
             <div className="Options Content">
                         
@@ -54,8 +65,8 @@ const Notes = () => {
      
                      </div>
         </div>
-        <center> <h2><h6>Subject</h6>{classData.subject}</h2></center>
-            <div className="Content col">
+      
+            <div className="Content ">
 
 
             <div className="w-30 h-100 mt-50 col-4">
@@ -63,9 +74,9 @@ const Notes = () => {
                 </div>
 
 
-                <div className="w-100 h-100 bg-dark col">
+                <div className="w-80 h-100 bg-dark col">
 
-                    <h3 className="w-100 h-90 bg-light">Write Your Notes here</h3>
+                    <h3 className="w-auto h-90 bg-light">Write Your Notes here</h3>
 
                  
                 </div>

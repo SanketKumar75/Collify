@@ -31,6 +31,11 @@
   }
 }
 
+.material-icons {
+  font-size: 30px;
+   color: white;
+ }
+
 /* For Sign up and log */
 .form{
   display: flex;
@@ -42,6 +47,7 @@
   font-family: 'Style Script', cursive;
   justify-content: center;
   flex-direction: column;
+  font-size:100px;
 }
 .comforta{
   font-family: 'Comfortaa', cursive;
@@ -78,7 +84,19 @@
 
  }
 
- input{
+ input {
+  background: none;
+  border: none;
+  padding: 12px 15px;
+  margin-top: 10%;
+  margin: 8px 0;
+  width: 100%;
+  height: 70%;
+  border-bottom: 1px solid white;
+  text-decoration: rgb(152, 76, 76);
+
+}
+select{
   background: none;
   border: none;
   padding: 12px 15px;
@@ -88,10 +106,13 @@
   height: 70%;
   border-bottom: 1px solid white;
   text-decoration: white;
-
 }
+.selecttext
+  {
+    background-color: #282c34;
+  }
 
-
+ 
 
 /* Sujects viewing on*/
 .Subjects{
@@ -101,7 +122,7 @@
   background: rgba(92, 83, 96, 0.497);
   border-radius: 10px;
   justify-content: center;
-  height: 500px;
+  height: 600px;
   margin-top: 5%;
   margin-bottom: 5%;
   width: 80%;
@@ -151,12 +172,12 @@
 .Content{
   background: whitesmoke;
   border-radius: 10px;
-  
-  margin-left: 2%;
+  margin-right: auto;
+  margin-left: auto;
   margin-top: 0%;
-  height: 500px;/*maybe you are looking for this  %*/
+  height: 600px;/*maybe you are looking for this  %*/
   margin-bottom: 2%;
-  width: 95%;
+  width: 70%;
   display: flex;
   flex-direction: row;
 }
@@ -167,13 +188,14 @@
   display: flex;
   flex-direction: row;
   flex: 1;
-  height: 100px;
-  margin-top: 2px;
+  height: 70px;
+  margin-top: 5px;
 }
 .Option{
   align-items: center;
-  align-content: inherit;
+  align-content: center;
   flex: 1;
+  margin-top: 10%;
   border-radius: 10px;
   background: none;
   height: 100px;

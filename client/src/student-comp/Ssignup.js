@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Navlink, useHistory} from 'react-router-dom';
-import sideimg from '../assets/20944201.jpg'
 import {NavLink} from 'react-router-dom';
+import sideimg from '../assets/sign.png'
 
 const Signup = () =>{
     document.body.style = 'background: #1DA1F2;';
@@ -47,7 +47,7 @@ const Signup = () =>{
 
     return (
         <>
-     <h3>Sign up</h3>
+
      <div className=" form d-flex  justify-content-center ">
         <div className=" Homepage-Container p-2 w-50 row mt-5 ">
         
@@ -55,33 +55,41 @@ const Signup = () =>{
             <center><h2 className="text-light">Student Signup</h2>
             <NavLink to="/student/login"> <p className="text-light smallFont mt-2">Already have an account?</p></NavLink> </center>
                             <form method="POST">
-                            <input type="name" name="name"
+                            <input className="text-light"  type="name" name="name"
                             value={user.name}
                             onChange={handleInput}
                                 placeholder="Userame" required />
-                                <input type="email" name="email"
-                                value={user.email}
-                                onChange={handleInput}
-                                    placeholder="Email Id" required />
-                                <input type="text" name="batch"
+
+                            <input className="text-light"  type="email" name="email"
+                            value={user.email}
+                            onChange={handleInput}
+                                placeholder="Email Id" required />
+
+                                <select className="text-light" type="text" name="batch"
                                 value={user.batch}
                                 onChange={handleInput}
-                                    placeholder="Batch" required />
-                                <input type="text" name="phone"
-                                value={user.phone}
-                                onChange={handleInput}
-                                    placeholder="Phone No" required />
-                                <input type="Password" name="password"
-                                value={user.password}
-                                onChange={handleInput}
-                                    placeholder="Confirm Password" required /><br />
-                                <button className="Logbutton text-light"  onClick={postData}>Sign up</button>
-                            </form>
+                                    placeholder="Batch" required >
+                                        <option className="selecttext" value="BCS-19">BCS-19</option>
+                                        <option className="selecttext" value="IMT-19">IMT-19</option>
+                                        <option className="selecttext" value="IMG-19">IMG-19</option>
+                                        </select>
+
+                            <input className="text-light"  type="text" name="phone"
+                            value={user.phone}
+                            onChange={handleInput}
+                                placeholder="Phone No" required />
+
+                            <input className="text-light"  type="Password" name="password"
+                            value={user.password}
+                            onChange={handleInput}
+                                placeholder=" Password" required /><br />
+                            <button className="Logbutton text-light"  onClick={postData}>Sign up</button>
+                        </form>
 
             </div>      
             
                         
-                        <img className="mt-3 mr-2 border rounded justify-content-right col p-0  imagecss" src={sideimg} alt="login image"  width="auto" height="300" />
+                        <img className="mt-3 mr-2 border rounded justify-content-right col p-0  imagecss" src={sideimg} alt="login image"  width="auto" height="350" />
                             
 
             </div>
