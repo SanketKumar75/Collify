@@ -52,10 +52,10 @@ const Assignment = () => {
                     </div> 
         
             <div className="Options  Content">
-                   <NavLink className=" nav-link col text-secondry " to="/student/class"><div className="Option text-light"><h4>Class</h4></div></NavLink>
-                   <NavLink className=" nav-link col text-secondry " to="/student/notes"><div className="Option text-light"><h4>Notes</h4></div></NavLink>
-                   <NavLink className=" nav-link col text-secondry bg-light  border rounded " to="/student/assignment"><div className="Option text-dark"><h4>Assignment</h4></div></NavLink>
-                   <NavLink className=" nav-link col text-secondry " to="/student/disscussion"><div className="Option text-light"><h4>Discussion</h4></div></NavLink>
+                   <NavLink className=" nav-link col text-secondry " to="/student/class"><div className="Option text-light"><h5>Class</h5></div></NavLink>
+                   <NavLink className=" nav-link col text-secondry " to="/student/notes"><div className="Option text-light"><h5>Notes</h5></div></NavLink>
+                   <NavLink className=" nav-link col text-secondry bg-light  border rounded " to="/student/assignment"><div className="Option text-dark"><h5>Assignment</h5></div></NavLink>
+                   <NavLink className=" nav-link col text-secondry " to="/student/disscussion"><div className="Option text-light"><h5>Discussion</h5></div></NavLink>
                 </div>
         </div>
         
