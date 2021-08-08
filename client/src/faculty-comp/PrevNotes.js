@@ -73,7 +73,7 @@ const PrevNotes = () => {
                 <h5  className="ml-5"> Previous Notes by Prof. {classData.faculty}</h5>
                 <div class="border rounded  border-1 border-info mr-auto ml-auto mt-5 h-75 w-75 bg-light overflow-auto">
                     {
-                        noteList.map(item=>{
+                        noteList.slice(0).reverse().map(item=>{
 
                             const url = item.note
                             const name = url.substring(url.lastIndexOf('/')+1);

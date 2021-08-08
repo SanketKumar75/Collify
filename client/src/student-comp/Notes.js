@@ -145,7 +145,7 @@ const Style={
 
                 <div className="w-75 border rounded overflow-auto mynote-cards">
 
-                    <h3 className=" mt-2 ml-5">My notes</h3>
+                    <h3 className=" mt-2 ml-5">Write new note</h3>
 
                     <input type="text"
                             name="header"
@@ -169,11 +169,11 @@ const Style={
 <br/>
 <br/>
                             <h3 className="mt-5 ml-5 col">
-                                    Previous notes
+                                   My previous notes
                             </h3>
                                         {
 
-                                            mynotesList.map(item =>{
+                                            mynotesList.slice(0).reverse().map(item =>{
                                                 return(
                                             
                                                     <>

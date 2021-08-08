@@ -52,7 +52,7 @@ const Assignment = () => {
 
                     </div> 
         
-            <div className="Options  Content">
+            <div className="Options offset-2  Content">
                    <NavLink className=" nav-link col text-secondry " to="/student/class"><div className="Option text-light"><h5>Class</h5></div></NavLink>
                    <NavLink className=" nav-link col text-secondry " to="/student/notes"><div className="Option text-light"><h5>Notes</h5></div></NavLink>
                    <NavLink className=" nav-link col text-secondry bg-light  border rounded " to="/student/assignment"><div className="Option text-dark"><h5>Assignment</h5></div></NavLink>
@@ -60,9 +60,9 @@ const Assignment = () => {
                 </div>
         </div>
         
-        <div className=" Content  ">
+        <div className=" Content offset-2  row ">
                 
-                <Ongoing />    
+                <Ongoing  />    
                 <PrevAssign />
             </div>
         </>

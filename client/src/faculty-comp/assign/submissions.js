@@ -58,7 +58,7 @@ const Submissions = () => {
             <div className="card-header mt-1 border round width-CSS overflow-scroll ">Submissions</div>
 
                 {
-                    SubList.map(item=>{
+                    SubList.slice(0).reverse().map(item=>{
 
                         
                         const url = item.submit

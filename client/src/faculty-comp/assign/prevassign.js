@@ -63,7 +63,7 @@ const PrevAssign = ( ) => {
                         <h6 className="ml-2"> previous assignments</h6>
                           
                         {
-                            assignList.map(item=>{
+                            assignList.slice(0).reverse().map(item=>{
 
                             const url = item.assign
                             const name = url.substring(url.lastIndexOf('/')+1);

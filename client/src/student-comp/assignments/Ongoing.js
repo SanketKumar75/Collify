@@ -152,10 +152,10 @@ const Ongoing = () => {
     return (
         <> 
         {/* <div className="w-100 h-100 mt-1 overflow-scroll"> */}
-            <div className="card mr-auto ml-auto mt-2   overflowForCSS">
+            <div className="card mr-auto ml-auto w-75 mt-2   overflowForCSS">
                     {
                         
-                        classData.map(item=>{
+                        classData.slice(0).reverse().map(item=>{
                             console.log(item)
                             const assign_id = item._id
                             

@@ -60,7 +60,7 @@ const PrevAssign = () => {
                     <div class="border rounded  border-1 border mr-auto ml-auto mt-2 h-50 w-75 bg-light overflow-auto">
                         <h6 className="card-header"> previous assignments</h6>
                         {
-                        assign.map(item=>{
+                        assign.slice(0).reverse().map(item=>{
 
                             const url = item.assign
                             const name = url.substring(url.lastIndexOf('/')+1);

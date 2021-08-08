@@ -300,6 +300,9 @@ select{
   overflow-x: hidden;
 }
 
+.bring-in-center{
+  margin-left: 20%;
+}
 
 
 /* .Background{
