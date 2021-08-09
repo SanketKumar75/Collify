@@ -58,7 +58,9 @@ const StLogin = () => {
                 
                         <div className=" mr-5 ml-5 justify-content-center col p-2 ">
                             <center><h2 className="text-light">Student Login</h2>
-                            <NavLink to="/student/signup"> <p className="text-light smallFont mt-2">Dont have an account?</p></NavLink> </center>
+                            {/* <NavLink to="/student/signup"> <p className="text-light smallFont mt-2">Dont have an account?</p></NavLink>  */}
+                            <p className="text-light smallFont mt-2">If you dont know the password for login, contract admin block</p>
+                            </center>
                                 <form className="col  " method="POST">
                                 <input className="row text-light inputcss" type="text" name="email"
                                 value={email}
