@@ -45,10 +45,10 @@ const Subject = () => {
         <>
         
         <div className="Subjects">
-           
-            <h2>InClass</h2>
-
-            
+                
+            <h2>Enrolled class</h2>
+                                        
+                                    
                 {
                     data.map(item=>{
                         const postData = async (e) =>{
@@ -75,25 +75,25 @@ const Subject = () => {
                             const classObj = item;
                             return(
                                 <>
-                                <div>
-                                
-                                </div>
-                            
-                                
-                                <Link className="nav-link text-dark" to="/faculty/class" onClick={postData} >
-                                <div className="SubId">
-                                <div className="Details">
-                                    <h6>{item.faculty}</h6>
-                                        <br></br>
-                                    <h6>{item.batch}</h6>
-                
-                                </div>
-                                <h4 className="subName">{item.subject}</h4>
-                                <div className="joinClass">
-                                <button onClick={postData}>Take Class</button>
-                                </div>
-                                </div>
-                                </Link>
+                               
+                                         
+                                        
+                                        <Link className="nav-link text-dark" to="/faculty/class" onClick={postData} >
+                                        <div className="SubId text-dark">
+                                        <div className="Details">
+                                            <h6>{item.faculty}</h6>
+                                                <br></br>
+                                            <h6>{item.batch}</h6>
+                        
+                                        </div>
+                                        <h4 className="subName">{item.subject}</h4>
+                                        <div className="joinClass">
+                                        <button className="btn btn-info text-light " onClick={postData}>Take Class</button>
+                                        </div>
+                                        </div>
+                                        </Link>
+                                       
+
                                 </>
                                 
                             )}

@@ -123,6 +123,7 @@ select{
   align-self: center;
   text-align: center;
   background: rgba(92, 83, 96, 0.497);
+  box-shadow: rgba(0, 0, 0, 0.50) 0px 20px 50px;
   border-radius: 10px;
   justify-content: center;
   height: 600px;
@@ -130,6 +131,11 @@ select{
   margin-bottom: 5%;
   width: 80%;
   overflow: scroll;
+  
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
 }
 
 
@@ -183,6 +189,8 @@ select{
   width: 70%;
   display: flex;
   flex-direction: row;
+  box-shadow: rgba(0, 0, 0, 0.50) 0px 20px 50px;
+
 }
 .Options{
   border-radius:  10px 10px 10px 10px;
@@ -193,6 +201,9 @@ select{
   flex: 1;
   height: 70px;
   margin-top: 5px;
+  box-shadow: rgba(0, 0, 0, 0.50) 0px 20px 20px;
+
+
 }
 .Option{
   align-items: center;

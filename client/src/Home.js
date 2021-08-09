@@ -33,15 +33,34 @@ const Home = () => {
                 <div className="Homepage-Container p-2 w-50  row ">
                         <div className=" mr-5 ml-3 justify-content-center rbackground-blue  p-2 ">
                             <h3>Student</h3>
-                            <p>If you area a student you can </p>
-                            <p>Click here to login as a student </p>
+                            <p>If you are a student you can </p>
+                                    <div className=" ml-3 smallFont text-dark  mt-0" > 
+                                    |Attend classes hosted by your faculty.|<br/>
+                                    |Write down Important notes.|<br/>
+                                    |Checkout notes provided by your faculty.|<br/>
+
+                                    |Clear your doubts with the faculty.|<br/>
+
+                                    </div>
+                                <br/>
+                            <div className="" >Click here to login as a student </div >
                         <NavLink  className="nav-link" to ="/student/login">
                         <h4 className="col mt-2 text-dark border border-light rounded p-3">Student</h4></NavLink>
                         </div>      
             
                         <div className="ml-3 justify-content-center  p-2">
                             <h3>Faculty</h3>
-                            <p>Click here to login as a faculty </p>
+                            <p>If you are a student you can </p>
+                                    <div className=" ml-3 smallFont text-dark  mt-0" > 
+                                    |Host live-classes.|<br/>
+                                    |Provide notes to the student.|<br/>
+                                    |Create assignment.|<br/>
+                                    |Evaluate submissions by students.|<br/>
+                                    |Clear students doubt and have discussion with them.|<br/>
+
+                                    </div>
+                                <br/>
+                            <div className="" >Click here to login as a faculty </div >
                         <NavLink className="nav-link" to ="/faculty/login">
                             <h4 className="p-3  border border-light rounded col mt-2  text-dark">Faculty</h4></NavLink>
                         </div>

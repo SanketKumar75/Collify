@@ -73,7 +73,8 @@ const Discussion = () => {
                             </div >
                             <h5 className="mt-3 mb-0 mr-5">Subject: {classData.subject}</h5>
                             <h5 className="mt-3 mb-0 mr-5">Faculty: {classData.faculty}</h5>
-                            <button className="bg-dark border rounded h-5  text-light" > <NavLink className="nav-link text-light" to="/faculty/login" >logout</NavLink></button>
+                            <button className="bg-dark border rounded h-5  text-light"  > 
+                            <NavLink className="nav-link text-light" to="/faculty/login" onClick={(e)=> {window.alert("Successfully logged out")}}>logout</NavLink></button>
 
                         </div>  
             <div className="Options Content">
@@ -113,7 +114,7 @@ const Discussion = () => {
                         <div className="col-7 mb-1 mr-0 mt-1  h-auto  sendermessagebox bg-success text-light">
                         <div className="sender mt-0 ml-2 float-right mr-2" >{item.user}</div>
                             <div  className="ml-1 ">
-                                 <p className="h-auto mt-3 ml-2 bottom-0 ">{item.message}</p>
+                                 <p className="h-auto mt-3 ml-2 bottom-0 break-line">{item.message}</p>
                             </div>
                         </div>
                        
@@ -127,7 +128,7 @@ const Discussion = () => {
                                                 
                                             <div className="NOtsender mt-0 ml-2 ">{item.user}</div>
                                                 <div  className="ml-1">
-                                                 <p className="h-auto mt-3 ml-2 bottom-0">{item.message}</p>
+                                                 <p className="h-auto mt-3 ml-2 bottom-0 break-line">{item.message}</p>
                                                 </div>
                                             </div>
                                 </>
@@ -139,7 +140,7 @@ const Discussion = () => {
 
                         <div className=" mt-0">
                             <div class=" input-group mb-3 h-10">
-                                    <input 
+                                    <textarea 
                                     type="text" 
                                     class="form-control textareaCSS" 
                                     value={message}

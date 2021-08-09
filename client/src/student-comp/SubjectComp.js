@@ -35,7 +35,7 @@ const Subject = () => {
         
         <div className="Subjects">
            
-            <h2>InClass</h2>
+            <h2>Enrolled class</h2>
 
             
                 {
@@ -52,7 +52,7 @@ const Subject = () => {
                        
                          
                         <NavLink className="nav-link" to="/student/class" onClick={postData}>
-                        <div className="SubId">
+                        <div className="SubId text-light">
                         <div className="Details">
                         <h6>Batch:  {item.batch}</h6>
                                 <br></br>
@@ -60,8 +60,8 @@ const Subject = () => {
         
                         </div>
                         <h4 className="subName"> <h6>Subject:</h6> {item.subject}</h4>
-                        <div className="joinClass">
-                        <button onClick={postData}>Join Class</button>
+                        <div className="joinClass ">
+                        <button className="btn btn-info text-light " onClick={postData}>Join Class</button>
                         </div>
                         </div>
                         </NavLink>

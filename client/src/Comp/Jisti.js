@@ -27,7 +27,7 @@ class Video extends Component {
         const options = {
             roomName: this.state.room,
             width: '100%',
-            height: 700,
+            height: 600,
             
             interfaceConfigOverwrite: {
                 DEFAULT_LOGO_URL: 'images/watermark.svg', 
@@ -140,7 +140,7 @@ class Video extends Component {
         return (
             <>
             <header className="nav-bar">
-                <p className="item-left heading">VideoClass</p>
+                {/* <p className="item-left heading">VideoClass</p> */}
             </header>
             <div id="jitsi-iframe"></div>
             <div class="item-center">

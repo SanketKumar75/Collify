@@ -51,7 +51,8 @@ const FacClass = (props) => {
                         </div >
                         <h5 className="mt-3 mb-0 mr-5">Subject: {classData.subject}</h5>
                         <h5 className="mt-3 mb-0 mr-5">Faculty: {classData.faculty}</h5>
-                        <button className="bg-dark border rounded h-5  text-light" > <NavLink className="nav-link text-light" to="/student/login" >logout</NavLink></button>
+                        <button className="bg-dark border rounded h-5  text-light"  > 
+                            <NavLink className="nav-link text-light" to="/faculty/login" onClick={(e)=> {window.alert("Successfully logged out")}}>logout</NavLink></button>
 
                     </div> 
         <div className="Options Content">
@@ -66,17 +67,11 @@ const FacClass = (props) => {
         </div>
          
             <div className="Content ">
-            {/* <div className="h-10 w-50">
-            <button 
-                type="button" 
-                // onClick={(e)=> {GetClass(e)}}
-                className="col btn btn-primary h-50 w-75 mt-1 ml-5">Take Online Class</button>
-            </div> */}
+         
                 
-                <div className="mt-1  h-75 w-100 bg-secondary border rounded">
+                <div className="mt-0  h-75 w-100  border rounded">
 
-                    {/* <h3>Recorded classes here</h3> */}
-                    {/* <Video/> */}
+               
                     <Video className="float"/>
                 </div>
 
