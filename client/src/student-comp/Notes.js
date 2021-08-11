@@ -121,7 +121,7 @@ const Style={
                         <h5 className="mt-3 mb-0 mr-5">Subject: {classData.subject}</h5>
                         <h5 className="mt-3 mb-0 mr-5">Faculty: {classData.faculty}</h5>
                         <button className="bg-dark border rounded h-5  text-light"  > 
-                            <NavLink className="nav-link text-light" to="/faculty/login" onClick={(e)=> {window.alert("Successfully logged out")}}>logout</NavLink></button>
+                            <NavLink className="nav-link text-light" to="/student/login" onClick={(e)=> {window.alert("Successfully logged out")}}>logout</NavLink></button>
 
                     </div>  
             

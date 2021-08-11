@@ -81,6 +81,12 @@ const StLogin = () => {
 
             </div>
             </div>
+
+            <center><div className="text-light smallFont">Bheetar pravesh karne ke lie <br/>
+            gravityboi@collify,  thatsmyspot@collify ya cursedchild@collify<br/> 
+            inme se kisi email ka prayas kare.<br/>
+            Aur passward ke lie national wifi password ka istamaal kare. 
+            <br/><br/>Dhanyavaad</div></center>
                
            
         </>

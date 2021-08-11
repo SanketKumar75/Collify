@@ -50,7 +50,7 @@ const Home = () => {
             
                         <div className="ml-3 justify-content-center  p-2">
                             <h3>Faculty</h3>
-                            <p>If you are a student you can </p>
+                            <p>If you are a faculty you can </p>
                                     <div className=" ml-3 smallFont text-dark  mt-0" > 
                                     |Host live-classes.|<br/>
                                     |Provide notes to the student.|<br/>

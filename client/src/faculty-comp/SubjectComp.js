@@ -16,6 +16,7 @@ const Subject = () => {
 
 
     const localName = localStorage.getItem("name");
+
     localStorage.removeItem("classID")
     localStorage.removeItem("classObj")
     
@@ -43,6 +44,8 @@ const Subject = () => {
 
     return (
         <>
+        <center><h2 className="mt-3 text-dark">Welcome  {localName}!!</h2></center>
+
         
         <div className="Subjects">
                 

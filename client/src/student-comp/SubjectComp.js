@@ -8,6 +8,7 @@ const Subject = () => {
 
 
     const localBatch = localStorage.getItem("batch")
+    const name = localStorage.getItem("name")
     localStorage.removeItem("classID")
     localStorage.removeItem("classObj")
 
@@ -32,8 +33,9 @@ const Subject = () => {
 
     return (
         <>
-        
+        <center><h2 className="mt-3 text-dark">Welcome  {name}!!</h2></center>
         <div className="Subjects">
+            
            
             <h2>Enrolled class</h2>
 
