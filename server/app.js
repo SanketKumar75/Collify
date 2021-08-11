@@ -94,6 +94,12 @@ app.post('/student/upload/submission', (req, res) =>{
 
 
 
+//For production on heroku
+if(process.env.NODE_ENV == "production"){
+    app.use(express.static("client/build"));
+}
+
+
 
 console.log("Yes it works");
 

@@ -201,10 +201,6 @@ router.get('/student',(req, res)=>{
 );
 
 //homepage
-router.get('/', (req, res)=>{
-    res.send("Here you are from Auth");
-    console.log('AtHome');
-}
-);
+
 
 module.exports = router;
