@@ -190,15 +190,6 @@ router.post('/faculty-login', async (req, res) =>{
 
 
 //OtherPages here
-router.get('/about', authenticate, (req, res)=>{
-    res.send("Here you are ABOUT");
-}
-);
-
-router.get('/student',(req, res)=>{
-    res.send("Here you are ABOUT");
-}
-);
 
 //homepage
 

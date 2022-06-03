@@ -80,9 +80,7 @@ const Notes = () => {
         })
         }
     }, [url])
-    const PostNotes =()=>{
-   
-        
+    const PostNotes =()=>{ 
         // let filepath
         const data = new FormData()
         data.append("file", file)

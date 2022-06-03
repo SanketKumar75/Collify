@@ -21,15 +21,15 @@ module.exports = (req, res, next) =>{
             req.facData = userdata
             next()
         })
-        // Student.findById(_id).then(userdata =>{
-        //     req.facData = userdata
-        //     next()
-        // })
+
         
     })
 }
 
-
+        // Student.findById(_id).then(userdata =>{
+        //     req.facData = userdata
+        //     next()
+        // })
 // const jwt = require('jsonwebtoken');
 // const Faculty = require('../models/fSchema')
 

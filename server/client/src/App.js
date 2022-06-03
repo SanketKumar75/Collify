@@ -5,6 +5,7 @@ import {Route} from 'react-router-dom';
 import StudentHome from'./student-comp/S-main';
 import FacultyHome from './faculty-comp/F-main';
 import Home from './Home';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 

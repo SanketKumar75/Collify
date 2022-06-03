@@ -89,7 +89,7 @@ const FacLogin = () => {
             <center><div className="text-light smallFont">Bheetar pravesh karne ke lie <br/>
             albert@collify,  cvraman@collify ya srinivasramanujan@collify<br/> 
             inme se kisi email ka prayas kare.<br/>
-            Aur passward ke lie national wifi password ka istamaal kare. 
+            Aur passward ke lie 12345678 ka istamaal kare. 
             <br/><br/>Dhanyavaad</div></center>
 
         </>
