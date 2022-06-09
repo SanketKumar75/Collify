@@ -7,3 +7,9 @@ On collify you can
 4. Discuss subject with your classmates and teacher
 
 You can checkout the hosted demo at http://www.collifyweb.herokuapp.com/
+
+use any of these username for teacher login -> faculty1@collify , faculty2@collify , faculty3@collify
+use any of these username for student login -> student1@collify , student2@collify , student3@collify
+and use apssword -> 12345678
+
+
